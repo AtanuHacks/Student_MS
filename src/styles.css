@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+/* Ensure the app takes full viewport height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Main app container */
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main content wrapper - this should wrap everything except navbar and footer */
+.content-wrapper {
+    flex: 1 0 auto;
+}
+
+/* Footer positioning */
+app-footer {
+    flex-shrink: 0;
+}

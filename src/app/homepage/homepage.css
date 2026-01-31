@@ -57,6 +57,8 @@ body {
 .notice-board h4 {
     margin-bottom: 10px;
     text-align: center;
+    font-size: 24px;
+    color: rgb(198, 7, 7);
 }
 
 .notice-board ul {
@@ -154,33 +156,6 @@ body {
   background: #fff;
 }
 
-
-
-/* ===== FOOTER ===== */
-footer {
-    background: linear-gradient(135deg, #1f3c88, #132743);
-    color: white;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-footer h4 {
-    margin-bottom: 10px;
-}
-
-footer p {
-    font-size: 14px;
-}
-
-footer .copyright {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 13px;
-}
-
 /* ===== NOTICE BOARD SYNC WITH SLIDER ===== */
 .notice-board {
     position: absolute;
@@ -214,5 +189,199 @@ body {
         width: 100%;
         height: auto;
         margin-top: 20px;
+    }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* For tablets and medium screens (1024px and below) */
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 30px;
+        position: relative;
+    }
+    
+    .hero-slider {
+        width: 100%;
+        height: 450px;
+        left: 0;
+        margin-bottom: 50px;
+        grid-column: 1;
+    }
+    
+    .notice-board {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 25px;
+        overflow-y: visible;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 32px;
+    }
+    
+    .hero-text button {
+        margin: 0 auto;
+    }
+    
+}
+
+/* For tablets (768px and below) */
+@media (max-width: 768px) {
+    .hero {
+        padding: 30px 20px;
+        gap: 30px;
+    }
+    
+    .hero-text h1 {
+        font-size: 28px;
+    }
+    
+    .hero-text h3 {
+        font-size: 18px;
+    }
+    
+    .hero-slider {
+        height: 380px;
+        border-radius: 14px;
+    }
+    
+    .controls {
+        bottom: 50px;
+    }
+    
+    .arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+    
+    .notice-board {
+        padding: 22px;
+        margin-left: 0;
+    }
+    
+}
+
+/* For mobile phones (480px and below) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 25px 15px;
+        gap: 25px;
+    }
+    
+    .hero-text h1 {
+        font-size: 24px;
+    }
+    
+    .hero-text h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    
+    .hero-text p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .hero-text button {
+        padding: 12px 24px;
+        font-size: 15px;
+        width: 100%;
+        max-width: 220px;
+    }
+    
+    .hero-slider {
+        height: 300px;
+        border-radius: 12px;
+    }
+    
+    .controls {
+        bottom: 40px;
+        gap: 12px;
+    }
+    
+    .arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+    
+    .counter {
+        font-size: 13px;
+    }
+    
+    .dots {
+        bottom: 15px;
+    }
+    
+    .dots span {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .notice-board {
+        padding: 20px;
+    }
+    
+    .notice-board h4 {
+        font-size: 17px;
+    }
+    
+    .notice-board li {
+        font-size: 14px;
+        margin: 7px 0;
+    }
+    
+}
+
+/* For very small mobile screens (360px and below) */
+@media (max-width: 360px) {
+    .hero {
+        padding: 20px 12px;
+    }
+    
+    .hero-text h1 {
+        font-size: 22px;
+    }
+    
+    .hero-slider {
+        height: 250px;
+    }
+    
+    .controls {
+        bottom: 35px;
+    }
+    
+    .arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .notice-board {
+        padding: 18px;
+    }
+    
+}
+
+/* For landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-slider {
+        height: 250px;
+    }
+    
+    .hero {
+        padding: 20px;
+        gap: 20px;
     }
 }

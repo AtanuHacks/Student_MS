@@ -8,26 +8,41 @@
 <body>
     <!-- ===== TOP NAVBAR ===== -->
     <header class="navbar">
-        <div class="logo">
-            <img src="https://via.placeholder.com/50" alt="logo">
-            <span>School Logo</span>
-        </div>
 
-        <nav>
-            <a routerLink="homepage">Home</a>
-            <a routerLink="prospectus">Prospectus</a>
-            <a routerLink="gallery">Gallery</a>
-            <a routerLink="notices">Notices</a>
-            <a routerLink="achievements">Achievements</a>
-            <a routerLink="about-us">About</a>
-            <a routerLink="contact">Contact Us</a>
-        </nav>
+    <!-- Left logo -->
+    <div class="logo">
+        <img src="school_logo.png" alt="logo">
+    </div>
 
-        <img class="badge" src="https://via.placeholder.com/45" alt="badge">
+    <!-- HAMBURGER (NEW) -->
+    <div class="hamburger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav [class.open]="menuOpen">
+        <a [routerLink]="['/homepage']" (click)="closeMenu()">Home</a>
+        <a [routerLink]="['/prospectus']" (click)="closeMenu()">Prospectus</a>
+        <a [routerLink]="['/gallery']" (click)="closeMenu()">Gallery</a>
+        <a [routerLink]="['/notices']" (click)="closeMenu()">Notices</a>
+        <a [routerLink]="['/achievements']" (click)="closeMenu()">Achievements</a>
+        <a [routerLink]="['/about-us']" (click)="closeMenu()">About</a>
+        <a [routerLink]="['/contact']" (click)="closeMenu()">Contact Us</a>
+    </nav>
+
+
+    <!-- Right badge -->
+    <div class="logo">
+        <img class="badge" src="cbse.png" alt="badge">
+    </div>
+
     </header>
+
     <!-- ===== NOTICE STRIP ===== -->
     <div class="notice-strip">
-        <marquee>Admission Open 2026 | Apply Now | CBSE Affiliated</marquee>
+    <marquee>Admission Open 2026 | Apply Now | CBSE Affiliated</marquee>
     </div>
 
 </body>
