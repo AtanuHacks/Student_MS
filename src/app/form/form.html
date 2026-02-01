@@ -1,1 +1,56 @@
-<p>form works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- PRE FORM SECTION -->
+    <div *ngIf="next === 0" class="pre-form-wrapper">
+
+        <h1 class="main-title">Admission Form</h1>
+
+        <div class="pre-form-card">
+
+            <!-- Guidelines -->
+            <div class="pre-box">
+            <h2>Guidelines</h2>
+            <ul>
+                <li>Fill all details carefully</li>
+                <li>Use a valid mobile number</li>
+                <li>OTP verification is mandatory</li>
+                <li>Details cannot be changed later</li>
+            </ul>
+            </div>
+
+            <!-- Verification -->
+            <div class="pre-box">
+                <h2>Verification</h2>
+
+                <select aria-label="Choose Class" id="classSelect" [(ngModel)]="selectedClass">
+                    <option value="null" disabled>Choose Class</option>
+                    <option *ngFor="let cls of classes" [value]="cls">
+                        Class {{ cls }}
+                    </option>
+                </select>
+
+                <input type="text" maxlength="10" pattern="\d*" inputmode="numeric" [(ngModel)]="mobile" placeholder="Mobile Number" />
+
+                <button class="btn-secondary" (click)="sendOtp()">Send OTP</button>
+
+                <input type="text" placeholder="Enter OTP" [(ngModel)]="otp" />
+
+                <button class="btn-primary" (click)="verify()">Verify & Continue</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="next === 1">
+
+    </div>
+
+</body>
+</html>

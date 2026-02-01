@@ -1,0 +1,126 @@
+/* Wrapper */
+.pre-form-wrapper {
+  min-height: auto;          
+  padding: 40px 20px;        
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Title */
+.main-title {
+  font-size: 36px;
+  color: #ff6f61;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Main card (same as form card feel) */
+.pre-form-card {
+  background: #fff0f2;
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  gap: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Individual boxes */
+.pre-box {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+}
+
+/* Headings */
+.pre-box h2 {
+  color: #ff8c42;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+/* Guidelines */
+.pre-box ul {
+  padding-left: 18px;
+}
+
+.pre-box li {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+
+/* Inputs */
+.pre-box input , .pre-box select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ffb085;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 14px;
+}
+
+.pre-box select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ffb085;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, #ff6f61, #ffb347);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background: #ffd6c9;
+  color: #444;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* Note */
+.note {
+  font-size: 12px;
+  color: #777;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+
+  .main-title {
+    font-size: 26px;
+  }
+
+  .pre-form-card {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .pre-box {
+    padding: 18px;
+  }
+}
+
+
