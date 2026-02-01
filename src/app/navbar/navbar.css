@@ -98,7 +98,7 @@ nav a:hover {
   display: flex;
   width: max-content;
   cursor: pointer;
-  animation: notice-scroll 12s linear infinite;
+  animation: notice-scroll 20s linear infinite;
 }
 
 /* pause on hover */
@@ -109,9 +109,9 @@ nav a:hover {
 .notice-text span {
   white-space: nowrap;
   padding-right: 160px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
-  color: #333;
+  color: #193c9c;
 }
 
 /* seamless loop */
