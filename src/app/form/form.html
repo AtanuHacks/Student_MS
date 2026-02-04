@@ -7,50 +7,318 @@
 </head>
 <body>
 
-    <!-- PRE FORM SECTION -->
-    <div *ngIf="next === 0" class="pre-form-wrapper">
+    <h1>Student Registration Form</h1>
 
-        <h1 class="main-title">Admission Form</h1>
+    <form [formGroup]="student_form">
 
-        <div class="pre-form-card">
+        <!-- PRE FORM SECTION -->
+        <div *ngIf="step === 0" class="pre-form-card">
 
             <!-- Guidelines -->
             <div class="pre-box">
-            <h2>Guidelines</h2>
-            <ul>
-                <li>Fill all details carefully</li>
-                <li>Use a valid mobile number</li>
-                <li>OTP verification is mandatory</li>
-                <li>Details cannot be changed later</li>
-            </ul>
+                <h2>Guidelines</h2>
+                <ul>
+                    <li>Fill all details carefully</li>
+                    <li>Use a valid mobile number</li>
+                    <li>OTP verification is mandatory</li>
+                    <li>Details cannot be changed later</li>
+                </ul>
             </div>
 
             <!-- Verification -->
             <div class="pre-box">
                 <h2>Verification</h2>
-
-                <select aria-label="Choose Class" id="classSelect" [(ngModel)]="selectedClass">
-                    <option value="null" disabled>Choose Class</option>
+                <span class="required-top" *ngIf="studentClass?.errors?.['required'] && studentClass?.touched">
+                    Required
+                </span>
+                <select aria-label="Choose Class" formControlName="studentClass" id="classSelect">
+                    <option value="" disabled selected>Select Class</option>
                     <option *ngFor="let cls of classes" [value]="cls">
                         Class {{ cls }}
                     </option>
                 </select>
 
-                <input type="text" maxlength="10" pattern="\d*" inputmode="numeric" [(ngModel)]="mobile" placeholder="Mobile Number" />
+                <span class="required-top" *ngIf="mobile?.errors?.['required'] && mobile?.touched">
+                    Required
+                </span>
 
-                <button class="btn-secondary" (click)="sendOtp()">Send OTP</button>
+                <!-- Pattern (only when value exists) -->
+                <span class="required-top" *ngIf="mobile?.errors?.['pattern'] && mobile?.touched && mobile?.value">
+                    Enter valid 10-digit phone number
+                </span>
 
-                <input type="text" placeholder="Enter OTP" [(ngModel)]="otp" />
+                <input type="text" maxlength="10" pattern="\d*" inputmode="numeric" formControlName="mobile" placeholder="Mobile Number" />
 
-                <button class="btn-primary" (click)="verify()">Verify & Continue</button>
+                <!-- <button class="btn-secondary" (click)="sendOtp()">Send OTP</button>
+                <input type="text" placeholder="Enter OTP" [(ngModel)]="otp" /> -->
+
+                <button type="button" class="btn-primary" (click)="verify()">Continue</button>
+            </div>
+        </div>
+
+        <!-- ================= STEP 1 ================= -->
+        <div *ngIf="step === 1" class="form-step">
+
+            <h2>Student Details</h2>
+
+            <div class="required-top" *ngIf="firstName?.touched && firstName?.errors?.['required']">
+                First name is required
+            </div>
+
+            <div class="required-top" *ngIf="firstName?.touched && firstName?.errors?.['pattern']">
+                Enter valid first name (No spaces or numbers)
+            </div>
+
+            <input type="text" placeholder="First Name" formControlName="firstName">
+
+            <div class="required-top" *ngIf="lastName?.touched && lastName?.errors?.['required']">
+                Last name is required
+            </div>
+
+            <div class="required-top" *ngIf="lastName?.touched && lastName?.errors?.['pattern']">
+                Enter valid last name (No spaces or numbers)
+            </div>
+
+            <input type="text" placeholder="Last Name" formControlName="lastName">
+
+            <div class="required-top" *ngIf="age?.touched && age?.errors?.['required']">
+                Age is required
+            </div>
+
+            <div class="required-top" *ngIf="age?.touched && (age?.errors?.['min'] || age?.errors?.['max'])">
+                Enter valid age
+            </div>
+
+            <input type="number" placeholder="Age" formControlName="age">
+
+            <span class="required-top" *ngIf="gender?.invalid && (gender?.touched || gender?.dirty)">
+            * Required
+            </span>
+
+            <div class="name-row">
+                <label><input type="radio" value="Male" formControlName="gender"> Male</label>
+                <label><input type="radio" value="Female" formControlName="gender"> Female</label>
+                <label><input type="radio" value="Other" formControlName="gender"> Other</label>
+            </div>
+
+            <h2>Family & Contact Details</h2>
+
+            <div class="required-top" *ngIf="fatherName?.touched && fatherName?.errors?.['required']">
+                Father's name is required
+            </div>
+
+            <div class="required-top" *ngIf="fatherName?.touched && fatherName?.errors?.['pattern']">
+                Enter valid father's name
+            </div>
+            <input type="text" placeholder="Father Name" formControlName="fatherName">
+
+            <div class="required-top" *ngIf="father_profession?.touched && father_profession?.errors?.['required']">
+                Required
+            </div>
+
+            <div class="required-top" *ngIf="father_profession?.touched && father_profession?.errors?.['pattern']">
+                Enter valid Profession
+            </div>
+            <input type="text" placeholder="Father Profession" formControlName="father_profession">
+
+            <div class="required-top" *ngIf="motherName?.touched && motherName?.errors?.['required']">
+                Mother's name is required
+            </div>
+
+            <div class="required-top" *ngIf="motherName?.touched && motherName?.errors?.['pattern']">
+                Enter valid mother's name
+            </div>
+            <input type="text" placeholder="Mother Name" formControlName="motherName">
+
+            <div class="required-top" *ngIf="mother_profession?.touched && mother_profession?.errors?.['required']">
+                Required
+            </div>
+
+            <div class="required-top" *ngIf="mother_profession?.touched && mother_profession?.errors?.['pattern']">
+                Enter valid Profession
+            </div>
+            <input type="text" placeholder="Mother Profession" formControlName="mother_profession">
+
+            <span class="required-top" *ngIf="annual_income?.errors?.['required'] && annual_income?.touched">
+                Required
+            </span>
+
+            <span class="required-top" *ngIf="annual_income?.errors?.['pattern'] && annual_income?.touched && annual_income?.value">
+                Enter numbers only
+            </span>
+
+
+            <div class="rupee-input">
+                <span class="rupee">₹</span>
+                <input type="text" inputmode="numeric" pattern="[0-9.]*" placeholder="Annual Income" formControlName="annual_income">
+            </div>
+
+            <span class="required-top" *ngIf="address?.invalid && address?.touched">* Required</span>
+            <textarea placeholder="Address" formControlName="address"></textarea>
+
+            <span class="required-top" *ngIf="phone?.errors?.['required'] && phone?.touched">
+                Required
+            </span>
+
+            <span class="required-top" *ngIf="phone?.errors?.['pattern'] && phone?.touched">
+                Enter valid 10-digit phone number
+            </span>
+
+            <input type="tel" maxlength="10" placeholder="Phone Number" formControlName="phone">
+
+            <span class="required-top" *ngIf="mail?.errors?.['required'] && mail?.touched">
+                Required
+            </span>
+
+            <span class="required-top" *ngIf="mail?.errors?.['email'] && mail?.touched">
+                Enter a valid email address
+            </span>
+
+            <input type="email" placeholder="Email" formControlName="mail">
+
+            <span class="required-top" *ngIf="aadhaar?.errors?.['required'] && aadhaar?.touched">
+                Required
+            </span>
+
+            <span class="required-top" *ngIf="aadhaar?.errors?.['pattern'] && aadhaar?.touched">
+                Enter valid 12-digit Aadhaar number
+            </span>
+
+            <input type="text" maxlength="12" placeholder="Aadhaar Number" formControlName="aadhaar">
+
+            <span class="required-top" *ngIf="caste?.invalid && caste?.touched">* Required</span>
+
+            <div class="name-row">
+                <label><input type="radio" value="General" formControlName="caste"> General</label>
+                <label><input type="radio" value="SC" formControlName="caste"> SC</label>
+                <label><input type="radio" value="ST" formControlName="caste"> ST</label>
+                <label><input type="radio" value="OBC" formControlName="caste"> OBC</label>
+            </div>
+
+                <span class="required-top" *ngIf="religion?.invalid && religion?.touched">* Required</span>
+                <input type="text" placeholder="Religion" formControlName="religion">
+
+                <span class="required-top" *ngIf="hasSibling?.invalid && hasSibling?.touched">* Required</span>
+            <div class="name-row">
+                <label><input type="radio" value="yes" formControlName="hasSibling"> Has Sibling</label>
+                <label><input type="radio" value="no" formControlName="hasSibling"> No Sibling</label>
+            </div>
+
+            <div *ngIf="hasSibling?.value === 'yes'">
+                <div class="required-top" *ngIf="siblingName?.touched && siblingName?.errors?.['required']">
+                    Sibling's name is required
+                </div>
+
+                <div class="required-top" *ngIf="siblingName?.touched && siblingName?.errors?.['pattern']">
+                    Enter valid sibling's name
+                </div>
+                <input type="text" placeholder="Sibling Name" formControlName="siblingName">
+
+                <span class="required-top" *ngIf="siblingRoll?.invalid && siblingRoll?.touched">Required</span>
+                <input type="number" maxlength="3" placeholder="Sibling Roll No" formControlName="siblingRoll">
+
+                <span class="required-top" *ngIf="siblingClass?.errors?.['required'] && siblingClass?.touched">
+                    Required
+                </span>
+
+                <select aria-label="Sibling Class" formControlName="siblingClass" id="siblingClassSelect">
+                    <option value="" disabled selected>Select Sibling Class</option>
+                    <option *ngFor="let cls of classes" [value]="cls">
+                        Class {{ cls }}
+                    </option>
+                </select>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" (click)="back()">Previous</button>
+                <button type="button" (click)="next()">Next</button>
+            </div>
+        </div>
+
+        <!-- ================= STEP 3 ================= -->
+        <div *ngIf="step === 2" class="form-step">
+            
+            <h2>Upload Documents</h2>
+
+            <div class="file-upload-group">
+                <label>
+                    📷 Student Photo
+                    <input type="file" (change)="onImageSelect($event,'photo')">
+                    <span class="file-name">{{ photoFileName }}</span>
+                </label>
+
+                <label>
+                    ✍️ Signature
+                    <input type="file" (change)="onImageSelect($event,'signature')">
+                    <span class="file-name">{{ signatureFileName }}</span>
+                </label>
+
+                <label>
+                    🆔 Aadhaar Card
+                    <input type="file" (change)="onFileSelect($event,'aadhaar')">
+                    <span class="file-name">{{ aadhaarFileName }}</span>
+                </label>
+
+                <label>
+                    🍼 Birth Certificate
+                    <input type="file" (change)="onFileSelect($event,'birth')">
+                    <span class="file-name">{{ birthFileName }}</span>
+                </label>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" (click)="back()">Previous</button>
+                <button type="button" (click)="next()">Preview</button>
             </div>
 
         </div>
-    </div>
 
-    <div *ngIf="next === 1">
+        <!-- ================= PREVIEW ================= -->
+        <div *ngIf="step===3" class="form-step preview-box">
+            <h2>Preview Details</h2>
 
-    </div>
+            <h3>Student</h3>
+            <p>{{ student_form.value.firstName }} {{ student_form.value.lastName }}</p>
+            <p>Age: {{ student_form.value.age }}</p>
+            <p>Gender: {{ student_form.value.gender }}</p>
+
+            <h3>Family</h3>
+            <p>Father: {{ student_form.value.fatherName }} ({{ student_form.value.father_profession }})</p>
+            <p>Mother: {{ student_form.value.motherName }} ({{ student_form.value.mother_profession }})</p>
+            <p>Income: ₹{{ student_form.value.annual_income }}</p>
+
+            <h3>Contact</h3>
+            <p>Phone: {{ student_form.value.phone }}</p>
+            <p>Email: {{ student_form.value.mail }}</p>
+            <p>Address: {{ student_form.value.address }}</p>
+
+            <h3>Identity</h3>
+            <p>Aadhaar: {{ student_form.value.aadhaar }}</p>
+            <p>Caste: {{ student_form.value.caste }}</p>
+            <p>Religion: {{ student_form.value.religion }}</p>
+
+            <h3>Sibling</h3>
+            <p>{{ student_form.value.hasSibling }}</p>
+            <p *ngIf="student_form.value.hasSibling === 'yes'">
+                {{ student_form.value.siblingName }} |
+                {{ student_form.value.siblingRoll }} |
+                {{ student_form.value.siblingClass }}
+            </p>
+
+            <h3>Files</h3>
+            <p>Photo: {{ photoFileName }}</p>
+            <p>Signature: {{ signatureFileName }}</p>
+            <p>Aadhaar: {{ aadhaarFileName }}</p>
+            <p>Birth: {{ birthFileName }}</p>
+
+            <div class="form-actions">
+                <button type="button" (click)="back()">Edit</button>
+                <button type="submit" (click)="sub_form()">Confirm & Submit</button>
+            </div>
+        </div>
+
+    </form>
 
 </body>
 </html>
