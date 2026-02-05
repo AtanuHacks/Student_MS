@@ -106,7 +106,7 @@ nav a:hover {
   animation-play-state: paused;
 }
 
-.notice-text span {
+.notice-text span { 
   white-space: nowrap;
   padding-right: 160px;
   font-size: 17px;

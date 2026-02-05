@@ -163,6 +163,7 @@ body {
     right: 10px;                    /* right side of slider */
     width: 400px;
     margin-top: 30px;
+    cursor: pointer;
 
     height: 870px;                  /* SAME as .hero-slider height */
     background: #eef3f8;
