@@ -1,1 +1,73 @@
-<p>notices works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="notice-container">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button
+      class="tab"
+      [class.active]="activeTab === 'student'"
+      (click)="switchTab('student')">
+      Students
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'parent'"
+      (click)="switchTab('parent')">
+      Parents
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'teacher'"
+      (click)="switchTab('teacher')">
+      Teachers
+    </button>
+  </div>
+
+  <!-- Notice Cards -->
+  <div class="notice-list">
+
+    <div class="notice-card" *ngFor="let notice of paginatedNotices">
+      <div class="icon">{{ notice.icon }}</div>
+
+      <div class="notice-content">
+        <span class="date">{{ notice.date }}</span>
+        <h3>
+          {{ notice.title }}
+          <span *ngIf="notice.isNew" class="badge">NEW</span>
+        </h3>
+        <p>{{ notice.description }}</p>
+      </div>
+
+      <button class="btn">View</button>
+    </div>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      ‹ Previous
+    </button>
+
+    <span class="page">
+      Page {{ currentPage }} / {{ totalPages }}
+    </span>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      Next ›
+    </button>
+  </div>
+
+</div>
+
+</body>
+</html>

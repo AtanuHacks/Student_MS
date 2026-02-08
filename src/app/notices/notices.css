@@ -1,0 +1,90 @@
+.notice-container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 25px;
+}
+
+.tab {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+.tab.active {
+  border-bottom: 4px solid #1f4fd8;
+  font-weight: 600;
+  color: #000;
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.notice-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.notice-content {
+  flex: 1;
+}
+
+.notice-content h3 {
+  margin: 5px 0;
+}
+
+.badge {
+  background: red;
+  color: white;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.btn {
+  background: #fff2cc;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
