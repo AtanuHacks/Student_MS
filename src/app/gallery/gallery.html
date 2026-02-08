@@ -1,1 +1,41 @@
-<p>gallery works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="gallery-page">
+
+  <!-- Header -->
+  <div class="gallery-header">
+    <span class="badge">Photo Gallery</span>
+    <h1>Moments of Joy</h1>
+    <p>
+      Glimpses of life at our school — learning, playing,
+      celebrating and growing together.
+    </p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filters">
+    <button
+      *ngFor="let cat of categories"
+      (click)="setCategory(cat)"
+      [class.active]="activeCategory === cat">
+      {{ cat }}
+    </button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-grid">
+    <div class="gallery-card" *ngFor="let img of filteredImages()">
+      <img [src]="img.src" alt="School Gallery Image">
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
