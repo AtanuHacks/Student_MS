@@ -1,0 +1,266 @@
+/* =========================
+   BASE
+========================= */
+.achievement-page {
+  background: #f9fbff;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadePage 0.8s ease-in-out;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+.page-header {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.page-header h1 {
+  color: #1f3c88;
+  font-size: 36px;
+  animation: fadeText 0.7s ease;
+}
+
+.page-header p {
+  color: #666;
+  margin-top: 10px;
+  font-size: 16px;
+  animation: fadeText 0.9s ease;
+}
+
+@keyframes fadeText {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   STATS
+========================= */
+.achievement-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 0 40px 60px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  animation: popUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-card h2 {
+  color: #1f3c88;
+  font-size: 32px;
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.light-bg {
+  background: #eef3ff;
+}
+
+.section h2 {
+  color: #1f3c88;
+  font-size: 28px;
+  animation: fadeText 0.7s ease;
+}
+
+.section-sub {
+  color: #666;
+  margin-bottom: 40px;
+  animation: fadeText 0.9s ease;
+}
+
+/* =========================
+   TOPPERS
+========================= */
+.topper-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.topper-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.topper-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+}
+
+.topper-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.topper-card:hover img {
+  transform: scale(1.05);
+}
+
+.topper-card h3 {
+  color: #1f3c88;
+  margin-top: 15px;
+}
+
+.topper-card p {
+  font-size: 14px;
+}
+
+.topper-card span {
+  display: inline-block;
+  margin: 10px 0 20px;
+  background: #1f3c88;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* =========================
+   ACHIEVEMENT LIST
+========================= */
+.achievement-list {
+  max-width: 900px;
+  margin: auto;
+}
+
+.list-card {
+  background: #fff;
+  margin: 15px 0;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  animation: slideLeft 0.6s ease forwards;
+}
+
+.list-card:nth-child(1) { animation-delay: 0.1s; }
+.list-card:nth-child(2) { animation-delay: 0.2s; }
+.list-card:nth-child(3) { animation-delay: 0.3s; }
+.list-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   GALLERY
+========================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 16px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .achievement-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 20px 50px;
+  }
+
+  .topper-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+
+  .achievement-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .topper-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topper-card img {
+    height: 220px;
+  }
+}
