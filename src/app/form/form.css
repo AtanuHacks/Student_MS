@@ -5,14 +5,14 @@ h1 {
   font-size: 32px;
   text-align: center;
   margin: 25px 0;
-  color: #ff6f61;
+  color: #1d4ed8;
 }
 
 /* =========================
    PRE FORM CARD
 ========================= */
 .pre-form-card {
-  background: #fff0f2;
+  background: #eff6ff;
   border-radius: 20px;
   padding: 28px;
   width: 100%;
@@ -20,7 +20,7 @@ h1 {
   margin: 0 auto;
   display: flex;
   gap: 24px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 35px rgba(29, 78, 216, 0.18);
   box-sizing: border-box;
 }
 
@@ -29,14 +29,14 @@ h1 {
 ========================= */
 .pre-box {
   flex: 1;
-  background: #fff;
+  background: #ffffff;
   border-radius: 16px;
   padding: 24px;
 }
 
 .pre-box h2 {
   text-align: center;
-  color: #ff8c42;
+  color: #1e40af;
   margin-bottom: 16px;
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 .pre-box li {
   margin-bottom: 10px;
-  color: #555;
+  color: #374151;
 }
 
 /* =========================
@@ -62,7 +62,7 @@ h1 {
   padding: 12px 14px;
   font-size: 15px;
   border-radius: 12px;
-  border: 2px solid #ffb347;
+  border: 2px solid #1e3a8a;
   outline: none;
   margin-bottom: 18px;
   box-sizing: border-box;
@@ -71,13 +71,13 @@ h1 {
 
 .pre-box select:focus,
 .pre-box input:focus {
-  border-color: #ff6f61;
-  box-shadow: 0 0 8px rgba(255,111,97,0.35);
+  border-color: #1d4ed8;
+  box-shadow: 0 0 8px rgba(29, 78, 216, 0.35);
 }
 
 .pre-box button {
-  background: linear-gradient(to right, #ff6f61, #ffb347);
-  color: white;
+  background: #f4db92;
+  color: #1f2937;
   border: none;
   padding: 12px 28px;
   border-radius: 16px;
@@ -85,6 +85,8 @@ h1 {
   cursor: pointer;
   width: 100%;
   margin-top: 10px;
+  border: 2px solid #1e3a8a;
+
 }
 
 /* =========================
@@ -93,17 +95,17 @@ h1 {
 .form-step {
   max-width: 820px;
   margin: 30px auto;
-  background: #fff0f5;
+  background: #eff6ff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.15);
 }
 
 /* =========================
    STEP HEADINGS
 ========================= */
 .form-step h2 {
-  color: #ff6f61;
+  color: #1d4ed8;
   margin-bottom: 20px;
   font-size: 24px;
   text-align: center;
@@ -119,7 +121,7 @@ textarea {
   padding: 12px 14px;
   font-size: 15px;
   border-radius: 12px;
-  border: 2px solid #ffb347;
+  border: 2px solid #1e3a8a;
   outline: none;
   margin-bottom: 18px;
   box-sizing: border-box;
@@ -134,8 +136,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #ff6f61;
-  box-shadow: 0 0 8px rgba(255,111,97,0.35);
+  border-color: #1d4ed8;
+  box-shadow: 0 0 8px rgba(29, 78, 216, 0.35);
 }
 
 /* =========================
@@ -153,7 +155,7 @@ textarea:focus {
   align-items: center;
   gap: 6px;
   font-weight: 600;
-  color: #6b5b95;
+  color: #1e40af;
   cursor: pointer;
 }
 
@@ -175,7 +177,7 @@ textarea:focus {
   top: 50%;
   transform: translateY(-50%);
   font-weight: bold;
-  color: #333;
+  color: #1f2937;
 }
 
 .rupee-input input {
@@ -186,7 +188,7 @@ textarea:focus {
    REQUIRED TEXT
 ========================= */
 .required-top {
-  color: red;
+  color: #dc2626;
   font-size: 13px;
   margin-bottom: 6px;
   display: block;
@@ -204,10 +206,10 @@ textarea:focus {
 }
 
 .file-upload-group label {
-  background: #ffe4e1;
+  background: #fefce8;
   padding: 18px;
   border-radius: 14px;
-  border: 2px dashed #ff6f61;
+  border: 2px dashed #1d4ed8;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -218,7 +220,7 @@ textarea:focus {
 }
 
 .file-upload-group label:hover {
-  background: #ffd1cc;
+  background: #fef9c3;
 }
 
 .file-upload-group input {
@@ -227,7 +229,7 @@ textarea:focus {
 
 .file-name {
   font-size: 13px;
-  color: #666;
+  color: #4b5563;
   word-break: break-word;
 }
 
@@ -242,9 +244,9 @@ textarea:focus {
 }
 
 .form-actions button {
-  background: linear-gradient(to right, #ff6f61, #ffb347);
-  color: white;
-  border: none;
+  background: #f4db92;
+  color: #1f2937;
+  border: 2px solid #1e3a8a;
   padding: 12px 28px;
   border-radius: 16px;
   font-size: 15px;
@@ -254,7 +256,7 @@ textarea:focus {
 }
 
 .form-actions button:hover {
-  opacity: 0.9;
+  opacity: 0.95;
   transform: translateY(-2px);
   transition: all 0.2s;
 }
@@ -265,7 +267,7 @@ textarea:focus {
 .preview-box {
   max-width: 820px;
   margin: 30px auto;
-  background: #f9f9f9;
+  background: #f8fafc;
   padding: 25px;
   border-radius: 16px;
 }
