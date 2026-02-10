@@ -12,10 +12,27 @@
         <p><a [routerLink]="['/homepage']">Home</a> | <a [routerLink]="['/about-us']">About</a> | <a [routerLink]="['/gallery']">Gallery</a></p>
     </div>
 
-    <div>
+    <div class="location-box">
         <h4>Location</h4>
-        <p>State, ZIP Code</p>
+
+        <a
+        class="map-wrapper"
+        href="https://www.google.com/maps?q=India"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
+            <iframe
+                class="map"
+                src="https://www.google.com/maps?q=India&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </a>
+
+        <p class="location-text">State, ZIP Code</p>
     </div>
+
+
 
     <div>
         <h4>Contact Details</h4>
