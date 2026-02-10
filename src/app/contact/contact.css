@@ -1,119 +1,228 @@
-.contact-page {
-  padding: 40px 20px;
-  background: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Header */
-.contact-header {
-  text-align: center;
-  margin-bottom: 30px;
+/* =========================
+   MAIN SECTION
+========================= */
+.contact-section {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  font-family: Arial, sans-serif;
 }
 
-.contact-header h1 {
-  color: #1f4fd8;
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* =========================
+   CONTACT INFO (TOP PART)
+========================= */
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* LEFT TEXT SIDE */
+.contact-text {
+  flex: 1;
+  font-size: 16px;
+}
+
+.contact-text h2 {
   font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.contact-header p {
+.contact-text h2 span {
+  color: #f7b500;
+}
+
+.contact-text p {
+  margin-bottom: 20px;
   color: #555;
 }
 
-/* Form Container */
-.contact-form-container {
-  max-width: 800px;
-  margin: auto;
-  background: #f9fdfb;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+/* INFO BOX */
+.info-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-/* Form */
+.info-box .icon {
+  font-size: 22px;
+}
+
+.info-box h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #0f3b2e;
+}
+
+.info-box p {
+  font-size: 15px;
+  color: #555;
+}
+
+/* RIGHT IMAGE SIDE */
+.contact-image {
+  flex: 2.5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+.contact-form {
+  max-width: 600px;
+  margin-top: 25px;
+}
+
+.contact-form h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.contact-form h2 span {
+  color: #f7b500;
+}
+
+.contact-form p {
+  margin-bottom: 25px;
+  color: #666;
+}
+
+/* FORM ELEMENTS */
+.contact-form form {
+  width: 100%;
+}
+
+.contact-form label {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px 12px;
   margin-bottom: 15px;
-  border: 1px solid #cce5d3;
-  border-radius: 6px;
-  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
+  border-color: #f7b500;
   outline: none;
-  border-color: #1f4fd8;
 }
 
-/* Row for name & phone */
-.form-row {
-  display: flex;
-  gap: 15px;
-}
-
-.form-row input {
-  flex: 1;
-}
-
-/* Button */
+/* BUTTON */
 .contact-form button {
   width: 100%;
-  background: #1f4fd8;
-  color: #fff;
   padding: 12px;
+  background: #f7b500;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
 }
 
 .contact-form button:hover {
-  background: #365cc2;
+  background: #e0a800;
 }
 
-/* Info Boxes */
-.contact-info {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+/* =========================
+   MAP
+========================= */
+.map-container {
+  max-width: 400px;
+  width: 100%;
+  margin-top: 30px;
 }
 
-.info-box {
-  flex: 1;
-  max-width: 250px;
-  background: #ffffff;
-  border: 1px solid #e0f0e6;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: 0;
+  border-radius: 8px;
 }
 
-.info-box h3 {
-  color: #1f4fd8;
-  margin-bottom: 10px;
-}
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
-.info-box p {
-  color: #444;
-  font-size: 14px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
-  }
-
+/* TABLET */
+@media (max-width: 900px) {
   .contact-info {
     flex-direction: column;
-    align-items: center;
   }
 
-  .info-box {
-    width: 100%;
+  .contact-image {
+    justify-content: center;
+  }
+
+  .contact-image img {
+    height: 350px;
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .contact-text h2 {
+    font-size: 26px;
+  }
+
+  .contact-image {
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .contact-image img {
+    height: 280px;
+  }
+
+  .map-container iframe {
+    height: 300px;
   }
 }

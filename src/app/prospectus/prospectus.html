@@ -1,1 +1,54 @@
-<p>prospectus works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div  *ngIf="next_step===0" class="prospectus-modern">
+        <div class="prospectus-container">
+
+            <!-- LEFT CONTENT -->
+            <div class="prospectus-text">
+            <h2>School Prospectus</h2>
+            <p class="subtitle">Complete Academic & Admission Information</p>
+
+            <p>
+                Explore our official prospectus to learn about admission guidelines,
+                curriculum structure, fee details, facilities, school policies,
+                and co-curricular programs at XYZ Public School.
+            </p>
+
+            <button type="button" class="prospectus-btn" (click)="next()">
+                View Prospectus
+            </button>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="prospectus-image">
+                <img src="classroom.jpg" alt="Prospectus Image">
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="next_step === 1" class="pdf-overlay">
+    <!-- TOP BAR -->
+  <div class="pdf-toolbar">
+    <button (click)="closeViewer()">✖ Close</button>
+  </div>
+
+  <!-- PDF -->
+  <iframe
+    src="/prospectus.pdf"
+    class="pdf-frame">
+
+</iframe>
+
+</div>
+</body>
+</html>
+
+
+
+
