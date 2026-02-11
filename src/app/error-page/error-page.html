@@ -1,1 +1,25 @@
-<p>error-page works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="error-container">
+
+        <!-- LEFT IMAGE -->
+        <div class="left-section">
+            <img src="error-page-not-found-vector.png" alt="Error Illustration">
+        </div>
+
+        <!-- RIGHT TEXT -->
+        <div class="right-section">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <button [routerLink]="['/homepage']" class="home-button">Go to Home</button>
+        </div>
+
+    </div>
+</body>
+</html>

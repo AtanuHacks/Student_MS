@@ -1,0 +1,84 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY BACKGROUND (Exact Match Style) ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.error-container {
+    width: 90%;
+    max-width: 1300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===== LEFT IMAGE ===== */
+.left-section {
+    flex: 1.2;
+}
+
+.left-section img {
+    width: 100%;
+    max-width: 750px;
+}
+
+/* ===== RIGHT TEXT ===== */
+.right-section {
+    text-align: left;
+}
+
+.right-section h1 {
+    font-size: 150px;
+    font-weight: 600;
+    color: #4b4a8f; /* Purple tone like image */
+    letter-spacing: 2px;
+}
+
+.right-section h2 {
+    font-size: 32px;
+    color: #4b4a8f;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+button{
+    padding: 18px 45px;
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .error-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .right-section {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .right-section h1 {
+        font-size: 90px;
+    }
+
+    .right-section h2 {
+        font-size: 24px;
+    }
+}
