@@ -33,19 +33,19 @@
         </div>
     </div>
     <div *ngIf="next_step === 1" class="pdf-overlay">
-    <!-- TOP BAR -->
-  <div class="pdf-toolbar">
-    <button (click)="closeViewer()">✖ Close</button>
-  </div>
+        <!-- TOP BAR -->
+        <div class="pdf-toolbar">
+            <button (click)="closeViewer()">✖ Close</button>
+        </div>
 
-  <!-- PDF -->
-  <iframe
-    src="/prospectus.pdf"
-    class="pdf-frame">
+        <!-- PDF -->
+        <iframe
+            title="Prospectus PDF"
+            src="/prospectus.pdf"
+            class="pdf-frame">
+        </iframe>
 
-</iframe>
-
-</div>
+    </div>
 </body>
 </html>
 
