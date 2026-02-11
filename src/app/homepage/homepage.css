@@ -38,8 +38,8 @@ body {
 }
 
 .hero-text button {
-    padding: 12px 26px;
-    background: #1f4fd8;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
     border: none;
     color: white;
     border-radius: 6px;
