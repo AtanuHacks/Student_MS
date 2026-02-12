@@ -1,84 +1,99 @@
-/* ===== RESET ===== */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== BODY BACKGROUND (Exact Match Style) ===== */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ margin: 0%;
 }
 
-/* ===== MAIN CONTAINER ===== */
+/* Wrapper */
+.error-wrapper {
+  width: 100%;
+  padding: 0 20px;
+}
+
+
+/* Main Container */
 .error-container {
-    width: 90%;
-    max-width: 1300px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-/* ===== LEFT IMAGE ===== */
+/* Left Section */
 .left-section {
-    flex: 1.2;
+  flex: 1;
+  text-align: center;
 }
 
 .left-section img {
-    width: 100%;
-    max-width: 750px;
+  width: 100%;
+  max-width: 450px;
 }
 
-/* ===== RIGHT TEXT ===== */
+/* Right Section */
 .right-section {
-    text-align: left;
+  flex: 1;
 }
 
 .right-section h1 {
-    font-size: 150px;
-    font-weight: 600;
-    color: #4b4a8f; /* Purple tone like image */
-    letter-spacing: 2px;
+  font-size: 120px;
+  font-weight: 700;
+  color: #3b4cca;
+  margin-bottom: 10px;
 }
 
 .right-section h2 {
-    font-size: 32px;
-    color: #4b4a8f;
-    font-weight: 500;
-    margin-top: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
 }
 
-button{
-    padding: 18px 45px;
-    background: linear-gradient(135deg, #1e88e5, #1565c0);
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
+.right-section p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 400px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* Button */
+.home-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #3b4cca;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.home-button:hover {
+  background: #2a38a5;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
 @media (max-width: 900px) {
-    .error-container {
-        flex-direction: column;
-        text-align: center;
-    }
+  .error-container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .right-section {
-        margin-top: 30px;
-        text-align: center;
-    }
+  .right-section h1 {
+    font-size: 80px;
+  }
 
-    .right-section h1 {
-        font-size: 90px;
-    }
-
-    .right-section h2 {
-        font-size: 24px;
-    }
+  .right-section p {
+    margin: 0 auto 30px;
+  }
 }
