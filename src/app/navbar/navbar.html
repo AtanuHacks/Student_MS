@@ -44,16 +44,22 @@
         <div class="notice-strip">
             <div class="notice-track">
                 <div class="notice-text">
-                    <span [routerLink]="['/notices']">📢 Admission Open 2026 – Apply Now</span>
-                    <span [routerLink]="['/notices']">📝 Exam Schedule Released</span>
-                    <span [routerLink]="['/notices']">🏫 PTM on 12th March</span>
-                    <span [routerLink]="['/notices']">🎉 Annual Day Celebration</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Admission Open 2026'}">📢 Admission Open 2026 – Apply Now</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'PTM Schedule'}">🏫 PTM on 12th March</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Fee Reminder'}">💰 Fee Reminder</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Exam Schedule'}">📝 Exam Schedule Released</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{ notice: 'Result Announcement' }">🎉 Result Announcement</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Staff Meeting'}">👥 Staff Meeting on 15th March</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Syllabus Submission'}">📚 Syllabus Submission Deadline</span>
 
                     <!-- duplicate once for seamless loop -->
-                    <span [routerLink]="['/notices']">📢 Admission Open 2026 – Apply Now</span>
-                    <span [routerLink]="['/notices']">📝 Exam Schedule Released</span>
-                    <span [routerLink]="['/notices']">🏫 PTM on 12th March</span>
-                    <span [routerLink]="['/notices']">🎉 Annual Day Celebration</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Admission Open 2026'}">📢 Admission Open 2026 – Apply Now</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'PTM Schedule'}">🏫 PTM on 12th March</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Fee Reminder'}">💰 Fee Reminder</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Exam Schedule'}">📝 Exam Schedule Released</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{ notice: 'Result Announcement' }">🎉 Result Announcement</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Staff Meeting'}">👥 Staff Meeting on 15th March</span>
+                    <span [routerLink]="['/notices']" [queryParams]="{notice: 'Syllabus Submission'}">📚 Syllabus Submission Deadline</span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink , Router} from "@angular/router";
 
 @Component({
   selector: 'app-homepage',
@@ -9,6 +9,32 @@ import { RouterLink } from "@angular/router";
   imports: [RouterLink]
 })
 export class Homepage implements AfterViewInit, OnDestroy {
+  notice="";
+  
+  constructor(private router:Router){}
+  check(){
+    if(this.notice=="Admission Open 2026"){
+      this.router.navigate(['/notices',this.notice]);
+    }
+    else if(this.notice=="PTM Schedule"){
+      this.router.navigate(['/notices',this.notice]);
+    }
+    else if(this.notice=="Exam Schedule"){
+      this.router.navigate(['/notices',this.notice]);
+    }
+    else if(this.notice=="Result Announcement"){
+      this.router.navigate(['/notices',this.notice]);
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   private slider!: HTMLElement;
   private slidesWrap!: HTMLElement;
@@ -200,3 +226,6 @@ export class Homepage implements AfterViewInit, OnDestroy {
     this.isInitialized = false;
   }
 }
+
+  
+  

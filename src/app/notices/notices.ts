@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notices',
@@ -8,21 +9,31 @@ import { CommonModule } from '@angular/common';
   templateUrl: './notices.html',
   styleUrl: './notices.css',
 })
-export class Notices {
+export class Notices implements OnInit {
+
+  noticeValue: string | null = null;
+
+  constructor(private route: ActivatedRoute) {}
+
+  // ===============================
+  // Notice Page Logic
+  // ===============================
+
   activeTab: 'student' | 'parent' | 'teacher' = 'student';
   currentPage = 1;
   pageSize = 3;
 
   notices: any = {
+
     student: [
-      { title: 'Midterm Exams Postponed', description: 'Exams moved to May 15.', date: 'Apr 15, 2024', icon: '📘', isNew: true },
-      { title: 'Summer Camp Registration', description: 'Enroll before April 30.', date: 'Apr 10, 2024', icon: '🏕️', isNew: false },
-      { title: 'Sports Day Practice', description: 'Practice starts tomorrow.', date: 'Apr 09, 2024', icon: '⚽', isNew: false },
-      { title: 'Library Books Due', description: 'Return books by Friday.', date: 'Apr 08, 2024', icon: '📚', isNew: false }
+      { title: 'Admission Open 2026', description: 'Admission Are Open for 2026-27 Academic Year.', date: 'March 15, 2026', icon: '📘', isNew: true },
+      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false },
+      { title: 'Exam Schedule', description: 'Final Exam Schedule is available.', date: 'Apr 09, 2024', icon: '⚽', isNew: false },
+      { title: 'Result Announcement', description: 'Final Results are now available.', date: 'Apr 08, 2024', icon: '📚', isNew: false }
     ],
 
     parent: [
-      { title: 'PTM Scheduled', description: 'Meeting on April 15.', date: 'Apr 12, 2024', icon: '👨‍👩‍👧', isNew: true },
+      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false },
       { title: 'Fee Reminder', description: 'Submit fees before due date.', date: 'Apr 07, 2024', icon: '💳', isNew: false }
     ],
 
@@ -31,6 +42,42 @@ export class Notices {
       { title: 'Syllabus Submission', description: 'Submit by April 20.', date: 'Apr 06, 2024', icon: '📋', isNew: false }
     ]
   };
+
+  ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+
+      const notice = params['notice'];
+
+      // 🔁 Always reset first (VERY IMPORTANT)
+      this.activeTab = 'student';
+      this.currentPage = 1;
+      this.noticeValue = null;
+
+      if (!notice) return;
+
+      this.noticeValue = notice;
+
+      const lowerTitle = notice.toLowerCase();
+
+      for (const tab of ['student', 'parent', 'teacher'] as const) {
+
+        const index = this.notices[tab].findIndex(
+          (n: any) => n.title.toLowerCase() === lowerTitle
+        );
+
+        if (index !== -1) {
+
+          this.activeTab = tab;
+          this.currentPage = Math.floor(index / this.pageSize) + 1;
+
+          break;
+        }
+      }
+
+    });
+
+  }
 
   switchTab(tab: 'student' | 'parent' | 'teacher') {
     this.activeTab = tab;
@@ -57,5 +104,5 @@ export class Notices {
       this.currentPage--;
     }
   }
-}
 
+}

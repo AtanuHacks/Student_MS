@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./navbar.css']
 })
 export class Navbar {
-
+  
   menuOpen = false;
 
   constructor(private router: Router) {
@@ -25,4 +25,6 @@ export class Navbar {
   closeMenu() {
     this.menuOpen = false;
   }
+
 }
+

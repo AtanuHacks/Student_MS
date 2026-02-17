@@ -1,50 +1,71 @@
 .notice-container {
-  max-width: 900px;
-  margin: auto;
-  background: #fff;
+  max-width: 1000px;
+  margin: 40px auto;
   padding: 20px;
-  border-radius: 12px;
 }
 
+/* ===== TABS ===== */
 .tabs {
   display: flex;
-  border-bottom: 2px solid #eee;
-  margin-bottom: 25px;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 15px;
 }
 
 .tab {
-  flex: 1;
-  padding: 14px;
+  padding: 10px 20px;
   border: none;
-  background: none;
-  font-size: 18px;
+  background: #e6e6e6;
   cursor: pointer;
-  color: #555;
+  border-radius: 6px;
+  transition: 0.3s;
+  font-weight: 500;
 }
 
 .tab.active {
-  border-bottom: 4px solid #1f4fd8;
-  font-weight: 600;
-  color: #000;
+  background: #1f3c88;
+  color: white;
 }
 
-.section-title {
-  font-size: 22px;
-  margin-bottom: 20px;
+/* ===== NOTICE LIST ===== */
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* ===== NOTICE CARD ===== */
 .notice-card {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  border: 2px solid transparent;
 }
 
+.notice-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== ACTIVE (HIGHLIGHT) ===== */
+.notice-card.active {
+  border: 2px solid #1f3c88;
+  background: #fff8dc;
+  box-shadow: 0 0 20px rgba(31, 60, 136, 0.4);
+  transform: scale(1.02);
+}
+
+/* ===== ICON ===== */
 .icon {
-  font-size: 28px;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
+/* ===== CONTENT ===== */
 .notice-content {
   flex: 1;
 }
@@ -53,38 +74,59 @@
   margin: 5px 0;
 }
 
+.date {
+  font-size: 12px;
+  color: gray;
+}
+
+/* ===== BADGE ===== */
 .badge {
   background: red;
   color: white;
-  font-size: 11px;
-  padding: 3px 6px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 10px;
   margin-left: 8px;
 }
 
+/* ===== BUTTON ===== */
 .btn {
-  background: #fff2cc;
+  padding: 8px 15px;
   border: none;
-  padding: 8px 14px;
+  background: #1f3c88;
+  color: white;
   border-radius: 6px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+.btn:hover {
+  background: #132743;
+}
+
+/* ===== PAGINATION ===== */
 .pagination {
+  margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  gap: 20px;
 }
 
 .pagination button {
-  background: none;
+  padding: 6px 15px;
   border: none;
-  font-weight: 600;
+  background: #1f3c88;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .pagination button:disabled {
-  opacity: 0.4;
+  background: #ccc;
   cursor: not-allowed;
+}
+
+.page {
+  font-weight: 500;
 }

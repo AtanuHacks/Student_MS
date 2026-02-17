@@ -22,10 +22,13 @@
         <div class="notice-board">
             <h4>📌 Notice Board</h4>
             <ul>
-                <li [routerLink]="['/notices']">Admission Open</li>
-                <li [routerLink]="['/notices']">Exam Schedule</li>
-                <li [routerLink]="['/notices']">Holiday List</li>
-                <li [routerLink]="['/notices']">Result Announcement</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Admission Open 2026'}">Admission Open 2026</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'PTM Schedule'}">PTM Schedule</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Fee Reminder'}">Fee Reminder</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Exam Schedule'}">Exam Schedule</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Result Announcement'}">Result Announcement</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Staff Meeting'}">Staff Meeting</li>
+                <li (click)="check()" [routerLink]="['/notices']" [queryParams]="{notice: 'Syllabus Submission'}">Syllabus Submission</li>
             </ul>
         </div>
 

@@ -35,7 +35,12 @@
   <!-- Notice Cards -->
   <div class="notice-list">
 
-    <div class="notice-card" *ngFor="let notice of paginatedNotices">
+    <div 
+      class="notice-card"
+      *ngFor="let notice of paginatedNotices"
+      [class.active]="notice.title.toLowerCase() === noticeValue?.toLowerCase()"
+
+    >
       <div class="icon">{{ notice.icon }}</div>
 
       <div class="notice-content">
@@ -68,6 +73,9 @@
   </div>
 
 </div>
+
+
+
 
 </body>
 </html>
