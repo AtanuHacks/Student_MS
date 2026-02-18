@@ -105,4 +105,25 @@ export class Notices implements OnInit {
     }
   }
 
+
+
+// Modal state
+isModalOpen = false;
+selectedNotice: any = null;
+
+// Open modal from View button
+openModal(notice: any) {
+  this.selectedNotice = notice;
+  this.isModalOpen = true;
+  document.body.style.overflow = 'hidden'; // prevent scroll
+}
+
+// Close modal
+closeModal() {
+  this.isModalOpen = false;
+  this.selectedNotice = null;
+  document.body.style.overflow = 'auto';
+}
+
+
 }

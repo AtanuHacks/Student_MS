@@ -8,73 +8,87 @@
 <body>
     <div class="notice-container">
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button
-      class="tab"
-      [class.active]="activeTab === 'student'"
-      (click)="switchTab('student')">
-      Students
-    </button>
+      <!-- Tabs -->
+      <div class="tabs">
+        <button
+          class="tab"
+          [class.active]="activeTab === 'student'"
+          (click)="switchTab('student')">
+          Students
+        </button>
 
-    <button
-      class="tab"
-      [class.active]="activeTab === 'parent'"
-      (click)="switchTab('parent')">
-      Parents
-    </button>
+        <button
+          class="tab"
+          [class.active]="activeTab === 'parent'"
+          (click)="switchTab('parent')">
+          Parents
+        </button>
 
-    <button
-      class="tab"
-      [class.active]="activeTab === 'teacher'"
-      (click)="switchTab('teacher')">
-      Teachers
-    </button>
-  </div>
-
-  <!-- Notice Cards -->
-  <div class="notice-list">
-
-    <div 
-      class="notice-card"
-      *ngFor="let notice of paginatedNotices"
-      [class.active]="notice.title.toLowerCase() === noticeValue?.toLowerCase()"
-
-    >
-      <div class="icon">{{ notice.icon }}</div>
-
-      <div class="notice-content">
-        <span class="date">{{ notice.date }}</span>
-        <h5>
-          {{ notice.title }}
-          <span *ngIf="notice.isNew" class="badge">NEW</span>
-        </h5>
-        <p>{{ notice.description }}</p>
+        <button
+          class="tab"
+          [class.active]="activeTab === 'teacher'"
+          (click)="switchTab('teacher')">
+          Teachers
+        </button>
       </div>
 
-      <button class="btn">View</button>
+      <!-- Notice Cards -->
+      <div class="notice-list">
+
+        <div 
+          class="notice-card"
+          *ngFor="let notice of paginatedNotices"
+          [class.active]="notice.title.toLowerCase() === noticeValue?.toLowerCase()"
+
+        >
+          <div class="icon">{{ notice.icon }}</div>
+
+          <div class="notice-content">
+            <span class="date">{{ notice.date }}</span>
+            <h5>
+              {{ notice.title }}
+              <span *ngIf="notice.isNew" class="badge">NEW</span>
+            </h5>
+            <p>{{ notice.description }}</p>
+          </div>
+
+          <button class="btn" (click)="openModal(notice)">View</button>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">
+          ‹ Previous
+        </button>
+
+        <span class="page">
+          Page {{ currentPage }} / {{ totalPages }}
+        </span>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next ›
+        </button>
+      </div>
+
     </div>
 
-  </div>
 
-  <!-- Pagination -->
-  <div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">
-      ‹ Previous
-    </button>
+    <!-- Modal -->
+    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
 
-    <span class="page">
-      Page {{ currentPage }} / {{ totalPages }}
-    </span>
+      <div class="modal-box" (click)="$event.stopPropagation()">
 
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
-      Next ›
-    </button>
-  </div>
+        <button class="close-btn" (click)="closeModal()">✖</button>
 
-</div>
+        <h2>{{ selectedNotice?.title }}</h2>
+        <p>{{ selectedNotice?.description }}</p>
+        <p><strong>Date:</strong> {{ selectedNotice?.date }}</p>
 
+      </div>
 
+    </div>
 
 
 </body>
