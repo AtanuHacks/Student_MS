@@ -51,7 +51,7 @@
             </h5>
             <p>{{ notice.description }}</p>
           </div>
-
+          <button class="btn" routerLink="/form" *ngIf="notice.isapply">Apply Now</button>
           <button class="btn" (click)="openModal(notice)">View</button>
         </div>
 

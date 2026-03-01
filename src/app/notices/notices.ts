@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-notices',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './notices.html',
   styleUrl: './notices.css',
 })
@@ -26,7 +26,7 @@ export class Notices implements OnInit {
   notices: any = {
 
     student: [
-      { title: 'Admission Open 2026', description: 'Admission Are Open for 2026-27 Academic Year.', date: 'March 15, 2026', icon: '📘', isNew: true },
+      { title: 'Admission Open 2026', description: 'Admission Are Open for 2026-27 Academic Year.', date: 'March 15, 2026', icon: '📘', isNew: true , isapply: true},
       { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false },
       { title: 'Exam Schedule', description: 'Final Exam Schedule is available.', date: 'Apr 09, 2024', icon: '⚽', isNew: false },
       { title: 'Result Announcement', description: 'Final Results are now available.', date: 'Apr 08, 2024', icon: '📚', isNew: false }
