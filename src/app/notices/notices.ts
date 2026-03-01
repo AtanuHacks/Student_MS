@@ -27,19 +27,19 @@ export class Notices implements OnInit {
 
     student: [
       { title: 'Admission Open 2026', description: 'Admission Are Open for 2026-27 Academic Year.', date: 'March 15, 2026', icon: '📘', isNew: true , isapply: true},
-      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false },
-      { title: 'Exam Schedule', description: 'Final Exam Schedule is available.', date: 'Apr 09, 2024', icon: '⚽', isNew: false },
-      { title: 'Result Announcement', description: 'Final Results are now available.', date: 'Apr 08, 2024', icon: '📚', isNew: false }
+      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false , isapply: false},
+      { title: 'Exam Schedule', description: 'Final Exam Schedule is available.', date: 'Apr 09, 2024', icon: '⚽', isNew: false , isapply: false},
+      { title: 'Result Announcement', description: 'Final Results are now available.', date: 'Apr 08, 2024', icon: '📚', isNew: false , isapply: false}
     ],
 
     parent: [
-      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false },
-      { title: 'Fee Reminder', description: 'Submit fees before due date.', date: 'Apr 07, 2024', icon: '💳', isNew: false }
+      { title: 'PTM Schedule', description: 'PTM On April 15th.', date: 'Apr 15, 2024', icon: '🏕️', isNew: false , isapply: false},
+      { title: 'Fee Reminder', description: 'Submit fees before due date.', date: 'Apr 07, 2024', icon: '💳', isNew: false , isapply: false}
     ],
 
     teacher: [
-      { title: 'Staff Meeting', description: 'Mandatory meeting at 2 PM.', date: 'Apr 11, 2024', icon: '👩‍🏫', isNew: true },
-      { title: 'Syllabus Submission', description: 'Submit by April 20.', date: 'Apr 06, 2024', icon: '📋', isNew: false }
+      { title: 'Staff Meeting', description: 'Mandatory meeting at 2 PM.', date: 'Apr 11, 2024', icon: '👩‍🏫', isNew: true , isapply: false},
+      { title: 'Syllabus Submission', description: 'Submit by April 20.', date: 'Apr 06, 2024', icon: '📋', isNew: false , isapply: false}
     ]
   };
 
