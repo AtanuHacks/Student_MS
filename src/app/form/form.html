@@ -22,7 +22,9 @@
                     <li>Use a valid mobile number</li>
                     <li>OTP verification is mandatory</li>
                     <li>Details cannot be changed later</li>
-                    <li>Images/PDF should be under 50KB</li>
+                    <li>Images/PDF should be under 2MB</li>
+                    <li>Aadhar Card for students above 10 years , otherwise parent/guardian Aadhar is required</li>
+                    <li>Signature required for students of 11 and 12 , otherwise parent signature</li>
                 </ul>
             </div>
 
@@ -92,6 +94,25 @@
 
             <input type="number" placeholder="Age" formControlName="age">
 
+            <!-- Student Aadhaar (Only if Age > 10) -->
+            <div *ngIf="+age?.value! > 10">
+
+                <span class="required-top"
+                    *ngIf="studentAadhaar?.errors?.['required'] && studentAadhaar?.touched">
+                    Required
+                </span>
+
+                <span class="required-top"
+                    *ngIf="studentAadhaar?.errors?.['pattern'] && studentAadhaar?.touched">
+                    Enter valid 12-digit Aadhaar number
+                </span>
+
+                <input type="text"
+                    maxlength="12"
+                    placeholder="Student Aadhaar Number"
+                    formControlName="studentAadhaar">
+            </div>
+
             <span class="required-top" *ngIf="gender?.invalid && (gender?.touched || gender?.dirty)">
             * Required
             </span>
@@ -157,6 +178,22 @@
             <span class="required-top" *ngIf="address?.invalid && address?.touched">* Required</span>
             <textarea placeholder="Address" formControlName="address"></textarea>
 
+            <div class="required-top" *ngIf="state?.touched && state?.errors?.['required']">
+                State is required
+            </div>
+            <div class="required-top" *ngIf="state?.touched && state?.errors?.['pattern']">
+                Enter valid state name
+            </div>
+            <input type="text" placeholder="State" formControlName="state">
+
+            <div class="required-top" *ngIf="city?.touched && city?.errors?.['required']">
+                City is required
+            </div>
+            <div class="required-top" *ngIf="city?.touched && city?.errors?.['pattern']">
+                Enter valid city name
+            </div>
+            <input type="text" placeholder="City" formControlName="city">
+
             <span class="required-top" *ngIf="phone?.errors?.['required'] && phone?.touched">
                 Required
             </span>
@@ -185,7 +222,7 @@
                 Enter valid 12-digit Aadhaar number
             </span>
 
-            <input type="text" maxlength="12" placeholder="Aadhaar Number" formControlName="aadhaar">
+            <input type="text" maxlength="12" placeholder="Guardian's Aadhaar Number" formControlName="aadhaar">
 
             <span class="required-top" *ngIf="caste?.invalid && caste?.touched">* Required</span>
 
@@ -196,10 +233,10 @@
                 <label><input type="radio" value="OBC" formControlName="caste"> OBC</label>
             </div>
 
-                <span class="required-top" *ngIf="religion?.invalid && religion?.touched">* Required</span>
-                <input type="text" placeholder="Religion" formControlName="religion">
+            <span class="required-top" *ngIf="religion?.invalid && religion?.touched">* Required</span>
+            <input type="text" placeholder="Religion" formControlName="religion">
 
-                <span class="required-top" *ngIf="hasSibling?.invalid && hasSibling?.touched">* Required</span>
+            <span class="required-top" *ngIf="hasSibling?.invalid && hasSibling?.touched">* Required</span>
             <div class="name-row">
                 <label><input type="radio" value="yes" formControlName="hasSibling"> Has Sibling</label>
                 <label><input type="radio" value="no" formControlName="hasSibling"> No Sibling</label>
@@ -262,10 +299,22 @@
                 </label>
 
                 <label>
-                    🍼 Birth Certificate
+                    📄 Birth Certificate
                     <input type="file" (change)="onFileSelect($event,'birth')">
                     <span class="file-name">{{ birthFileName }}</span>
                 </label>
+            </div>
+
+            <div class="upload-guidelines">
+                <p><strong>Please Note:</strong></p>
+                <ul>
+                    <li>Aadhar Card for students above 10 years , otherwise parent/guardian Aadhar is required.</li>
+                    <li>Signature required for students of 11 and 12 , otherwise parent signature is required.</li>
+                    <li>Ensure all uploaded documents are genuine and valid.</li>
+                    <li>File size should not exceed 2MB.</li>
+                    <li>Only JPG, PNG, or PDF formats are accepted.</li>
+                    <li>Once submitted, documents cannot be modified.</li>
+                </ul>
             </div>
 
             <div class="form-actions">
@@ -293,9 +342,14 @@
             <p>Phone: {{ student_form.value.phone }}</p>
             <p>Email: {{ student_form.value.mail }}</p>
             <p>Address: {{ student_form.value.address }}</p>
+            <p>State: {{ student_form.value.state }}</p>
+            <p>City: {{ student_form.value.city }}</p>
 
             <h3>Identity</h3>
-            <p>Aadhaar: {{ student_form.value.aadhaar }}</p>
+            <p *ngIf="+student_form.value.age! > 10">
+                Student Aadhaar: {{ student_form.value.studentAadhaar }}
+            </p>
+            <p>Guardian Aadhaar: {{ student_form.value.aadhaar }}</p>
             <p>Caste: {{ student_form.value.caste }}</p>
             <p>Religion: {{ student_form.value.religion }}</p>
 

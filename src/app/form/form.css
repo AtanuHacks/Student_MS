@@ -233,6 +233,27 @@ textarea:focus {
   word-break: break-word;
 }
 
+.upload-guidelines {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.upload-guidelines h4 {
+  margin-bottom: 10px;
+}
+
+.upload-guidelines ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.upload-guidelines li {
+  margin-bottom: 6px;
+}
+
 /* =========================
    ACTION BUTTONS
 ========================= */

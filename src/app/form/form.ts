@@ -59,6 +59,7 @@ export class Form implements OnInit {
       Validators.min(3),
       Validators.max(25)
     ]),
+    studentAadhaar: new FormControl(''),
     gender: new FormControl('', Validators.required),
 
     /* ===== FAMILY ===== */
@@ -90,6 +91,8 @@ export class Form implements OnInit {
 
     /* ===== CONTACT ===== */
     address: new FormControl('', Validators.required),
+    state: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
+    city: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
     phone: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9]{10}$')
@@ -116,6 +119,26 @@ export class Form implements OnInit {
 
   /* ================= INIT ================= */
   ngOnInit(): void {
+
+    // Dynamic Student Aadhaar validation (age > 10)
+    this.age?.valueChanges.subscribe(value => {
+
+      const ageValue = Number(value);
+
+      if (!ageValue || ageValue <= 10) {
+        this.studentAadhaar?.clearValidators();
+        this.student_form.patchValue({
+          studentAadhaar: ''
+        });
+      } else {
+        this.studentAadhaar?.setValidators([
+          Validators.required,
+          Validators.pattern('^[0-9]{12}$')
+        ]);
+      }
+
+      this.studentAadhaar?.updateValueAndValidity();
+    });
 
     // Dynamic sibling validation
     this.hasSibling?.valueChanges.subscribe(value => {
@@ -199,8 +222,8 @@ export class Form implements OnInit {
       return;
     }
 
-    if (!this.photoFile || !this.signatureFile) {
-      alert('Please upload Photo and Signature');
+    if (!this.photoFile || !this.signatureFile || !this.aadhaarFile || !this.birthFile) {
+      alert('Please upload all documents');
       return;
     }
 
@@ -253,6 +276,7 @@ export class Form implements OnInit {
   get firstName() { return this.student_form.get('firstName'); }
   get lastName() { return this.student_form.get('lastName'); }
   get age() { return this.student_form.get('age'); }
+  get studentAadhaar() { return this.student_form.get('studentAadhaar'); }
   get gender() { return this.student_form.get('gender'); }
   get fatherName() { return this.student_form.get('fatherName'); }
   get father_profession() { return this.student_form.get('father_profession'); }
@@ -260,6 +284,8 @@ export class Form implements OnInit {
   get mother_profession() { return this.student_form.get('mother_profession'); }
   get annual_income() { return this.student_form.get('annual_income'); }
   get address() { return this.student_form.get('address'); }
+  get state() { return this.student_form.get('state'); }
+  get city() { return this.student_form.get('city'); }
   get phone() { return this.student_form.get('phone'); }
   get mail() { return this.student_form.get('mail'); }
   get aadhaar() { return this.student_form.get('aadhaar'); }
