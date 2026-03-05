@@ -59,7 +59,10 @@ export class Form implements OnInit {
       Validators.min(3),
       Validators.max(25)
     ]),
-    studentAadhaar: new FormControl(''),
+    studentAadhaar : new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]{12}$')
+    ]),
     gender: new FormControl('', Validators.required),
 
     /* ===== FAMILY ===== */
@@ -119,26 +122,6 @@ export class Form implements OnInit {
 
   /* ================= INIT ================= */
   ngOnInit(): void {
-
-    // Dynamic Student Aadhaar validation (age > 10)
-    this.age?.valueChanges.subscribe(value => {
-
-      const ageValue = Number(value);
-
-      if (!ageValue || ageValue <= 10) {
-        this.studentAadhaar?.clearValidators();
-        this.student_form.patchValue({
-          studentAadhaar: ''
-        });
-      } else {
-        this.studentAadhaar?.setValidators([
-          Validators.required,
-          Validators.pattern('^[0-9]{12}$')
-        ]);
-      }
-
-      this.studentAadhaar?.updateValueAndValidity();
-    });
 
     // Dynamic sibling validation
     this.hasSibling?.valueChanges.subscribe(value => {

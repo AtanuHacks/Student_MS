@@ -95,22 +95,17 @@
             <input type="number" placeholder="Age" formControlName="age">
 
             <!-- Student Aadhaar (Only if Age > 10) -->
-            <div *ngIf="+age?.value! > 10">
+            <div *ngIf="+age?.value! >= 10">
 
-                <span class="required-top"
-                    *ngIf="studentAadhaar?.errors?.['required'] && studentAadhaar?.touched">
+                <span class="required-top" *ngIf="studentAadhaar?.errors?.['required'] && studentAadhaar?.touched">
                     Required
                 </span>
 
-                <span class="required-top"
-                    *ngIf="studentAadhaar?.errors?.['pattern'] && studentAadhaar?.touched">
+                <span class="required-top" *ngIf="studentAadhaar?.errors?.['pattern'] && studentAadhaar?.touched">
                     Enter valid 12-digit Aadhaar number
                 </span>
 
-                <input type="text"
-                    maxlength="12"
-                    placeholder="Student Aadhaar Number"
-                    formControlName="studentAadhaar">
+                <input type="text" maxlength="12" placeholder="Student's Aadhaar Number" formControlName="studentAadhaar">
             </div>
 
             <span class="required-top" *ngIf="gender?.invalid && (gender?.touched || gender?.dirty)">
@@ -329,34 +324,34 @@
             <h2>Preview Details</h2>
 
             <h3>Student</h3>
-            <p>{{ student_form.value.firstName }} {{ student_form.value.lastName }}</p>
+            <p>{{ student_form.value.firstName | uppercase }} {{ student_form.value.lastName | uppercase }}</p>
             <p>Age: {{ student_form.value.age }}</p>
             <p>Gender: {{ student_form.value.gender }}</p>
 
             <h3>Family</h3>
-            <p>Father: {{ student_form.value.fatherName }} ({{ student_form.value.father_profession }})</p>
-            <p>Mother: {{ student_form.value.motherName }} ({{ student_form.value.mother_profession }})</p>
+            <p>Father: {{ student_form.value.fatherName | uppercase }} ({{ student_form.value.father_profession | uppercase }})</p>
+            <p>Mother: {{ student_form.value.motherName | uppercase }} ({{ student_form.value.mother_profession | uppercase }})</p>
             <p>Income: ₹{{ student_form.value.annual_income }}</p>
 
             <h3>Contact</h3>
             <p>Phone: {{ student_form.value.phone }}</p>
-            <p>Email: {{ student_form.value.mail }}</p>
-            <p>Address: {{ student_form.value.address }}</p>
-            <p>State: {{ student_form.value.state }}</p>
-            <p>City: {{ student_form.value.city }}</p>
+            <p>Email: {{ student_form.value.mail | lowercase }}</p>
+            <p>Address: {{ student_form.value.address | uppercase }}</p>
+            <p>State: {{ student_form.value.state | uppercase }}</p>
+            <p>City: {{ student_form.value.city | uppercase }}</p>
 
             <h3>Identity</h3>
-            <p *ngIf="+student_form.value.age! > 10">
+            <p *ngIf="+student_form.value.age! >= 10">
                 Student Aadhaar: {{ student_form.value.studentAadhaar }}
             </p>
             <p>Guardian Aadhaar: {{ student_form.value.aadhaar }}</p>
-            <p>Caste: {{ student_form.value.caste }}</p>
-            <p>Religion: {{ student_form.value.religion }}</p>
+            <p>Caste: {{ student_form.value.caste | uppercase }}</p>
+            <p>Religion: {{ student_form.value.religion | uppercase }}</p>
 
             <h3>Sibling</h3>
             <p>{{ student_form.value.hasSibling }}</p>
             <p *ngIf="student_form.value.hasSibling === 'yes'">
-                {{ student_form.value.siblingName }} |
+                {{ student_form.value.siblingName | uppercase}} |
                 {{ student_form.value.siblingRoll }} |
                 {{ student_form.value.siblingClass }}
             </p>
