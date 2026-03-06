@@ -85,14 +85,15 @@
             <input type="text" placeholder="Last Name" formControlName="lastName">
 
             <div class="required-top" *ngIf="age?.touched && age?.errors?.['required']">
-                Age is required
+                DOB is required
             </div>
 
             <div class="required-top" *ngIf="age?.touched && (age?.errors?.['min'] || age?.errors?.['max'])">
-                Enter valid age
+                Enter valid DOB
             </div>
-
-            <input type="number" placeholder="Age" formControlName="age">
+            <label class="dob-label" for="dob">Date of Birth</label>
+            <input id="dob" placeholder="Date of Birth" type="date" formControlName="dob" (change)="calculateAge()">
+            <input type="number" formControlName="age" placeholder="Calculated Age" readonly>
 
             <!-- Student Aadhaar (Only if Age > 10) -->
             <div *ngIf="+age?.value! >= 10">
@@ -325,6 +326,7 @@
 
             <h3>Student</h3>
             <p>{{ student_form.value.firstName | uppercase }} {{ student_form.value.lastName | uppercase }}</p>
+            <p>DOB: {{ student_form.value.dob }}</p>
             <p>Age: {{ student_form.value.age }}</p>
             <p>Gender: {{ student_form.value.gender }}</p>
 
@@ -351,9 +353,9 @@
             <h3>Sibling</h3>
             <p>{{ student_form.value.hasSibling }}</p>
             <p *ngIf="student_form.value.hasSibling === 'yes'">
-                {{ student_form.value.siblingName | uppercase}} |
-                {{ student_form.value.siblingRoll }} |
-                {{ student_form.value.siblingClass }}
+                {{ student_form.value.siblingName | uppercase}} | 
+                Roll No: {{ student_form.value.siblingRoll }} | 
+                Class: {{ student_form.value.siblingClass }}
             </p>
 
             <h3>Files</h3>

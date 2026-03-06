@@ -54,7 +54,8 @@ export class Form implements OnInit {
       Validators.required,
       Validators.pattern('^[A-Za-z]+$')
     ]),
-    age: new FormControl('', [
+    dob: new FormControl('', Validators.required),
+    age: new FormControl<number | null>(null, [
       Validators.required,
       Validators.min(3),
       Validators.max(25)
@@ -111,7 +112,7 @@ export class Form implements OnInit {
       Validators.pattern('^[0-9]{12}$')
     ]),
     caste: new FormControl('', Validators.required),
-    religion: new FormControl('', Validators.required),
+    religion: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
 
     /* ===== SIBLING ===== */
     hasSibling: new FormControl('', Validators.required),
@@ -167,6 +168,29 @@ export class Form implements OnInit {
   }
 
   /* ================= STEP ACTIONS ================= */
+
+  calculateAge() {
+
+    const dobValue = this.student_form.get('dob')?.value;
+
+    if (!dobValue) return;
+
+    const dob = new Date(dobValue);
+    const today = new Date();
+
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    this.student_form.patchValue({
+      age: age
+    });
+
+  }
+
 
   verify() {
     if (this.studentClass?.invalid) {
@@ -259,6 +283,7 @@ export class Form implements OnInit {
   get firstName() { return this.student_form.get('firstName'); }
   get lastName() { return this.student_form.get('lastName'); }
   get age() { return this.student_form.get('age'); }
+  get dob() { return this.student_form.get('dob'); }
   get studentAadhaar() { return this.student_form.get('studentAadhaar'); }
   get gender() { return this.student_form.get('gender'); }
   get fatherName() { return this.student_form.get('fatherName'); }

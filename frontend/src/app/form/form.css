@@ -164,6 +164,13 @@ textarea:focus {
   margin: 0;
 }
 
+.dob-label {
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
 /* =========================
    RUPEE INPUT
 ========================= */
