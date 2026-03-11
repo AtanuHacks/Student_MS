@@ -157,6 +157,77 @@
             </div>
             <input type="text" placeholder="Mother Profession" formControlName="mother_profession">
 
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="required-top" *ngIf="guardians?.touched && guardians?.errors?.['required']">
+                Required
+            </div>
+
+            <div class="required-top" *ngIf="guardians?.touched && guardians?.errors?.['pattern']">
+                Enter valid Guardianship
+            </div>
+
+            <select formControlName="guardianship" id="guardianship">
+                <option value="" disabled selected>Select Guardianship</option>
+                <option value="Father">Father</option>
+                <option value="Mother">Mother</option>
+                <option value="Other">Other</option>
+            </select>
+
+
+            <!-- SHOW WHEN OTHER IS SELECTED -->
+            <div *ngIf="guardians?.value === 'Other'">
+
+                <div class="required-top" *ngIf="name?.touched && name?.errors?.['required']">
+                    Guardian name is required
+                </div>
+
+                <div class="required-top" *ngIf="name?.touched && name?.errors?.['pattern']">
+                    Enter valid guardian name
+                </div>
+
+                <input type="text" placeholder="Guardian Name" formControlName="guardianname">
+
+
+                <span class="required-top" *ngIf="profession?.invalid && profession?.touched">
+                    Required
+                </span>
+
+                <input type="text" placeholder="Guardian Profession" formControlName="guardianprofession">
+
+
+                <span class="required-top" *ngIf="relation?.errors?.['required'] && relation?.touched">
+                    Required
+                </span>
+
+                <span class="required-top" *ngIf="relation?.errors?.['pattern'] && relation?.touched">
+                    Enter valid relation
+                </span>
+
+                <input type="text" placeholder="Guardian Relation" formControlName="guardianrelation">
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
             <span class="required-top" *ngIf="annual_income?.errors?.['required'] && annual_income?.touched">
                 Required
             </span>
@@ -333,6 +404,10 @@
             <h3>Family</h3>
             <p>Father: {{ student_form.value.fatherName | uppercase }} ({{ student_form.value.father_profession | uppercase }})</p>
             <p>Mother: {{ student_form.value.motherName | uppercase }} ({{ student_form.value.mother_profession | uppercase }})</p>
+            <p>Guardian: {{ student_form.value.guardianship }} 
+                <span *ngIf="student_form.value.guardianship === 'Other'">
+                    - {{ student_form.value.guardianname | uppercase }} ({{ student_form.value.guardianprofession | uppercase }}, {{ student_form.value.guardianrelation | uppercase }})
+                </span>
             <p>Income: ₹{{ student_form.value.annual_income }}</p>
 
             <h3>Contact</h3>

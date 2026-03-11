@@ -86,7 +86,20 @@ export class Form implements OnInit {
       Validators.required,
       Validators.pattern('^[A-Za-z ]+$')
     ]),
+    
+    guardianship: new FormControl('', 
+      Validators.required),
 
+    guardianname: new FormControl('', [
+      Validators.pattern('^[A-Za-z ]+$')
+    ]),
+    guardianprofession: new FormControl('', [
+      Validators.pattern('^[A-Za-z ]+$')
+    ]),
+    guardianrelation: new FormControl('', [
+      Validators.pattern('^[A-Za-z ]+$')
+    ]),
+    
     annual_income: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9.]+$')
@@ -119,10 +132,39 @@ export class Form implements OnInit {
     siblingName: new FormControl(''),
     siblingRoll: new FormControl(''),
     siblingClass: new FormControl('')
+
+    
   });
+  
 
   /* ================= INIT ================= */
+
   ngOnInit(): void {
+    
+      this.student_form.get('guardianship')?.valueChanges.subscribe(value => {
+
+      
+
+      if (value === 'Other') {
+
+        this.name?.setValidators([Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]);
+        this.profession?.setValidators([Validators.required]);
+        this.relation?.setValidators([Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]);
+
+      } else {
+
+        this.name?.clearValidators();
+        this.profession?.clearValidators();
+        this.relation?.clearValidators();
+
+      }
+
+      this.name?.updateValueAndValidity();
+      this.profession?.updateValueAndValidity();
+      this.relation?.updateValueAndValidity();
+
+    });
+
 
     // Dynamic sibling validation
     this.hasSibling?.valueChanges.subscribe(value => {
@@ -290,6 +332,10 @@ export class Form implements OnInit {
   get father_profession() { return this.student_form.get('father_profession'); }
   get motherName() { return this.student_form.get('motherName'); }
   get mother_profession() { return this.student_form.get('mother_profession'); }
+  get guardians() { return this.student_form.get('guardianship'); }
+  get name() { return this.student_form.get('guardianname'); }
+  get profession() { return this.student_form.get('guardianprofession'); }
+  get relation() { return this.student_form.get('guardianrelation'); }
   get annual_income() { return this.student_form.get('annual_income'); }
   get address() { return this.student_form.get('address'); }
   get state() { return this.student_form.get('state'); }
