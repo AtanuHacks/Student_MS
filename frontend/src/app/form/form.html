@@ -158,17 +158,6 @@
             <input type="text" placeholder="Mother Profession" formControlName="mother_profession">
 
 
-
-
-
-
-
-
-
-
-
-
-
             <div class="required-top" *ngIf="guardians?.touched && guardians?.errors?.['required']">
                 Required
             </div>
@@ -177,7 +166,7 @@
                 Enter valid Guardianship
             </div>
 
-            <select formControlName="guardianship" id="guardianship">
+            <select title="guardianship" formControlName="guardianship" id="guardianship">
                 <option value="" disabled selected>Select Guardianship</option>
                 <option value="Father">Father</option>
                 <option value="Mother">Mother</option>
@@ -217,16 +206,6 @@
                 <input type="text" placeholder="Guardian Relation" formControlName="guardianrelation">
 
             </div>
-
-
-
-
-
-
-
-
-
-
 
             <span class="required-top" *ngIf="annual_income?.errors?.['required'] && annual_income?.touched">
                 Required
