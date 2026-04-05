@@ -319,9 +319,209 @@
                 <button type="button" (click)="next()">Next</button>
             </div>
         </div>
+<!-- ================= STEP 2 (ONLY CLASS 11) ================= -->
+<div [hidden]="step !== 2 || studentClassAsNumber !== 11" class="form-step">
 
+    <h2>Stream Details</h2>
+
+    <!-- Board Name -->
+    <span class="required-top" *ngIf="boardName?.errors?.['required'] && boardName?.touched">
+        Required
+    </span>
+    <span class="required-top" *ngIf="boardName?.errors?.['pattern'] && boardName?.touched">
+        Enter valid board name
+    </span>
+    <input type="text" placeholder="Enter Board Name" formControlName="boardName">
+
+    <!-- School Name -->
+    <span class="required-top" *ngIf="schoolName?.errors?.['required'] && schoolName?.touched">
+        * Required
+    </span>
+    <span class="required-top" *ngIf="schoolName?.errors?.['pattern'] && schoolName?.touched">
+        Enter valid school name
+    </span>
+    <input type="text" placeholder="Enter School Name (Class 10)" formControlName="schoolName">
+
+    <!-- ================= MARKS TABLE ================= -->
+    <h3>Class 10 Marks</h3>
+
+<table class="marks-table">
+
+    <thead>
+        <tr>
+            <th class="col-subject">class-x</th>
+            <th class="col-subject">Mathematics</th>
+            <th class="col-subject">Science</th>
+            <th class="col-subject">Social Science</th>
+            <th class="col-subject">Hindi / Bengali</th>
+            <th class="col-subject">English</th>
+            <th class="col-subject">Additional</th>
+            <th class="col-total">Total</th>
+            <th class="col-percent">%</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <!-- Mathematics -->
+        <tr>
+            
+            <td>
+                <input type="number" min="0" max="100" formControlName="mathMarks">
+                
+            </td>
+            
+        
+
+        <!-- Repeat same pattern for all subjects -->
+        
+    
+            <td>
+                <input type="number" min="0" max="100" formControlName="scienceMarks">
+                <div class="error-box">
+                    <span *ngIf="scienceMarks?.errors?.['required'] && scienceMarks?.touched">Required</span>
+                    <span *ngIf="scienceMarks?.errors?.['min'] && scienceMarks?.touched">Min 0</span>
+                    <span *ngIf="scienceMarks?.errors?.['max'] && scienceMarks?.touched">Max 100</span>
+                </div>
+            </td>
+            
+
+        
+            
+            <td>
+                <input type="number" min="0" max="100" formControlName="socialMarks">
+                <div class="error-box">
+                    <span *ngIf="socialMarks?.errors?.['required'] && socialMarks?.touched">Required</span>
+                    <span *ngIf="socialMarks?.errors?.['min'] && socialMarks?.touched">Min 0</span>
+                    <span *ngIf="socialMarks?.errors?.['max'] && socialMarks?.touched">Max 100</span>
+                </div>
+            </td>
+                    
+            
+            <td>
+                <input type="number" min="0" max="100" formControlName="hindiMarks">
+                <div class="error-box">
+                    <span *ngIf="hindiMarks?.errors?.['required'] && hindiMarks?.touched">Required</span>
+                    <span *ngIf="hindiMarks?.errors?.['min'] && hindiMarks?.touched">Min 0</span>
+                    <span *ngIf="hindiMarks?.errors?.['max'] && hindiMarks?.touched">Max 100</span>
+                </div>
+            </td>
+            
+        
+            
+            <td>
+                <input type="number" min="0" max="100" formControlName="englishMarks">
+                <div class="error-box">
+                    <span *ngIf="englishMarks?.errors?.['required'] && englishMarks?.touched">Required</span>
+                    <span *ngIf="englishMarks?.errors?.['min'] && englishMarks?.touched">Min 0</span>
+                    <span *ngIf="englishMarks?.errors?.['max'] && englishMarks?.touched">Max 100</span>
+                </div>
+            </td>
+            
+
+        
+            
+            <td>
+                <input type="number" min="0" max="100" formControlName="additionalMarks">
+                <div class="error-box">
+                    <span *ngIf="additionalMarks?.errors?.['required'] && additionalMarks?.touched">Required</span>
+                    <span *ngIf="additionalMarks?.errors?.['min'] && additionalMarks?.touched">Min 0</span>
+                    <span *ngIf="additionalMarks?.errors?.['max'] && additionalMarks?.touched">Max 100</span>
+                </div>
+            </td>
+            
+        </tr>
+
+    </tbody>
+
+    <!-- SUMMARY ROWS -->
+    <tfoot>
+        <tr class="summary-row">
+            <td colspan="2"><strong>Best 5 Total</strong></td>
+            <td colspan="2"><strong>{{ totalBestMarks }}/500</strong></td>
+        </tr>
+
+        <tr class="summary-row">
+            <td colspan="2"><strong>Overall Percentage</strong></td>
+            <td colspan="2"><strong>{{ classPercentage | number:'1.2-2' }}%</strong></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+    <!-- Stream Selection -->
+    <div class="stream-wrapper">
+        <span class="required-top" *ngIf="stream?.touched && stream?.invalid">* Required</span>
+
+    <div class="name-row">
+        <label>
+            <input type="radio" value="Science" formControlName="stream"
+                [disabled]="!isStreamEligible('Science')">
+            Science
+            <span class="disabled-text" *ngIf="!isStreamEligible('Science')"> (Not Eligible)</span>
+        </label>
+
+        <label>
+            <input type="radio" value="Commerce" formControlName="stream"
+                [disabled]="!isStreamEligible('Commerce')">
+            Commerce
+            <span class="disabled-text" *ngIf="!isStreamEligible('Commerce')"> (Not Eligible)</span>
+        </label>
+
+        <label>
+            <input type="radio" value="Arts" formControlName="stream"
+                [disabled]="!isStreamEligible('Arts')">
+            Arts
+            <span class="disabled-text" *ngIf="!isStreamEligible('Arts')"> (Not Eligible)</span>
+        </label>
+    </div>
+
+    <!-- Science Type -->
+    <div *ngIf="stream?.value === 'Science'">
+        <span class="required-top" *ngIf="scienceType?.touched && scienceType?.invalid">
+            Select group
+        </span>
+
+        <div class="name-row">
+            <label><input type="radio" value="PCM" formControlName="scienceType"> PCM</label>
+            <label><input type="radio" value="PCB" formControlName="scienceType"> PCB</label>
+            <label><input type="radio" value="PCMB" formControlName="scienceType"> PCMB</label>
+        </div>
+    </div>
+    </div>
+    
+
+    <!-- Eligibility Box -->
+    <div class="eligibility-box" *ngIf="classPercentage !== null">
+        <h3><u>Class 10 Performance</u></h3>
+
+        <p><strong>Total Marks (Best 5): {{ totalBestMarks }}/500</strong></p>
+        <p><strong>Percentage: {{ classPercentage | number:'1.2-2' }}%</strong></p>
+
+        <div class="eligibility-status">
+            <p *ngIf="classPercentage >= 80" class="eligible-science"><span style="color:green ;font-weight:bold">✓</span> Science Eligible</p>
+            <p *ngIf="classPercentage < 80" class="not-eligible"><span style="color:red ;font-weight:bold">✗</span> Science: ≥80% required</p>
+
+            <p *ngIf="classPercentage >= 60" class="eligible-commerce"><span style="color:green ;font-weight:bold">✓</span> Commerce Eligible</p>
+            <p *ngIf="classPercentage < 60" class="not-eligible"><span style="color:red ;font-weight:bold">✗</span> Commerce: ≥60% required</p>
+
+            <p *ngIf="classPercentage >= 33" class="eligible-arts"><span style="color:green ;font-weight:bold">✓</span> Arts Eligible</p>
+            <p *ngIf="classPercentage < 33" class="not-eligible"><span style="color:red ;font-weight:bold">✗</span> Arts: ≥33% required</p>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+        <button type="button" (click)="back()">Previous</button>
+        <button type="button" (click)="next()"
+            [disabled]="!stream?.value || !isStreamEligible(stream?.value)">
+            Next
+        </button>
+    </div>
+
+</div>
         <!-- ================= STEP 3 ================= -->
-        <div *ngIf="step === 2" class="form-step">
+        <div *ngIf="step === 3" class="form-step">
             
             <h2>Upload Documents</h2>
 
@@ -371,7 +571,7 @@
         </div>
 
         <!-- ================= PREVIEW ================= -->
-        <div *ngIf="step===3" class="form-step preview-box">
+        <div *ngIf="step===4" class="form-step preview-box">
             <h2>Preview Details</h2>
 
             <h3>Student</h3>

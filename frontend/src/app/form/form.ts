@@ -19,9 +19,12 @@ export class Form implements OnInit {
 
   /* ================= STEP CONTROL ================= */
   step = 0;
+  classPercentage: number | null = null; // ADD THIS LINE
+  eligibleStreams: string[] = []; // ADD THIS LINE
+  totalBestMarks: number = 0;
 
   /* ================= CLASS OPTIONS ================= */
-  classes = [1,2,3,4,5,6,7,8,9,10,11,12];
+  classes = [1,2,3,4,5,6,7,8,9,10,11];
 
   /* ================= FILE NAMES ================= */
   photoFileName = '';
@@ -108,7 +111,8 @@ export class Form implements OnInit {
 
     /* ===== CONTACT ===== */
     address: new FormControl('', Validators.required),
-    state: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
+    state: new FormControl('', 
+      [Validators.required,Validators.pattern('^[A-Za-z ]+$')]),
     city: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
     phone: new FormControl('', [
       Validators.required,
@@ -131,7 +135,20 @@ export class Form implements OnInit {
     hasSibling: new FormControl('', Validators.required),
     siblingName: new FormControl(''),
     siblingRoll: new FormControl(''),
-    siblingClass: new FormControl('')
+    siblingClass: new FormControl(''),
+
+
+    stream: new FormControl(''),
+    scienceType: new FormControl(''),
+
+    mathMarks: new FormControl('',       [Validators.required,Validators.min(0), Validators.max(100)]),
+    scienceMarks: new FormControl('',    [Validators.required,Validators.min(0), Validators.max(100)]),
+    socialMarks: new FormControl('',     [Validators.required,Validators.min(0), Validators.max(100)]),
+    hindiMarks: new FormControl('',      [Validators.required,Validators.min(0), Validators.max(100)]),
+    englishMarks: new FormControl('',    [Validators.required,Validators.min(0), Validators.max(100)]),
+    additionalMarks: new FormControl('', [Validators.required,Validators.min(0), Validators.max(100)]),
+    boardName: new FormControl('',       [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
+    schoolName: new FormControl('',      [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
 
     
   });
@@ -142,8 +159,6 @@ export class Form implements OnInit {
   ngOnInit(): void {
     
       this.student_form.get('guardianship')?.valueChanges.subscribe(value => {
-
-      
 
       if (value === 'Other') {
 
@@ -163,7 +178,33 @@ export class Form implements OnInit {
       this.profession?.updateValueAndValidity();
       this.relation?.updateValueAndValidity();
 
-    });
+      this.studentClass?.valueChanges.subscribe(cls => {
+      const isClass11 = Number(cls) === 11;
+
+        const controls = [
+          this.boardName,
+          this.schoolName,
+          this.mathMarks,
+          this.scienceMarks,
+          this.socialMarks,
+          this.hindiMarks,
+          this.englishMarks,
+          this.additionalMarks,
+          this.stream
+        ];
+
+        controls.forEach(control => {
+          if (isClass11) {
+            control?.setValidators(Validators.required);
+          } else {
+            control?.clearValidators();
+            control?.setValue(''); // reset
+          }
+          control?.updateValueAndValidity();
+        });
+      });
+
+  });
 
 
     // Dynamic sibling validation
@@ -206,7 +247,12 @@ export class Form implements OnInit {
 
       this.age?.updateValueAndValidity();
     });
-
+        // ADD THIS: Calculate percentage and check stream eligibility
+    this.student_form.get('mathMarks')?.valueChanges.subscribe(() => this.calculateStreamEligibility());
+    this.student_form.get('scienceMarks')?.valueChanges.subscribe(() => this.calculateStreamEligibility());
+    this.student_form.get('socialMarks')?.valueChanges.subscribe(() => this.calculateStreamEligibility());
+    this.student_form.get('hindiMarks')?.valueChanges.subscribe(() => this.calculateStreamEligibility());
+    this.student_form.get('englishMarks')?.valueChanges.subscribe(() => this.calculateStreamEligibility());
   }
 
   /* ================= STEP ACTIONS ================= */
@@ -232,7 +278,55 @@ export class Form implements OnInit {
     });
 
   }
+    /* ================= STREAM ELIGIBILITY ================= */
+  calculateStreamEligibility() {
+  const getMark = (name: string) => {
+    const val = this.student_form.get(name)?.value;
+    if (val == null || val === '') return 0;
 
+    const num = +val;
+
+    // Validation: clamp between 0–100
+    if (num < 0) return 0;
+    if (num > 100) return 100;
+
+    return num;
+  };
+
+  const math = getMark('mathMarks');
+  const science = getMark('scienceMarks');
+  const social = getMark('socialMarks');
+  const hindi = getMark('hindiMarks');
+  const english = getMark('englishMarks');
+  const additional = getMark('additionalMarks');
+
+  // 👉 English compulsory
+  const optionalSubjects = [math, science, social, hindi, additional];
+
+  // 👉 pick best 4 from remaining 5
+  optionalSubjects.sort((a, b) => b - a);
+  const bestFour = optionalSubjects.slice(0, 4);
+
+  this.totalBestMarks = english + bestFour.reduce((a, b) => a + b, 0);
+
+this.classPercentage = (this.totalBestMarks / 500) * 100;
+
+  // eligibility same
+  this.eligibleStreams = [];
+
+  if (this.classPercentage >= 80) this.eligibleStreams.push('Science');
+  if (this.classPercentage >= 60) this.eligibleStreams.push('Commerce');
+  if (this.classPercentage >= 33) this.eligibleStreams.push('Arts');
+}
+  /* ================= STREAM VALIDATION ================= */
+  isStreamEligible(streamName: string | null | undefined): boolean {
+  if (!streamName) return false;
+  return this.eligibleStreams.includes(streamName);
+}
+getPercentage(mark: any): string {
+  if (mark === null || mark === '' || isNaN(mark)) return '0';
+  return ((+mark / 100) * 100).toFixed(0);
+}
 
   verify() {
     if (this.studentClass?.invalid) {
@@ -252,16 +346,86 @@ export class Form implements OnInit {
 
 
   next() {
-    if (this.student_form.invalid) {
-      this.student_form.markAllAsTouched();
-      return;
-    }
-    this.step++;
+
+  const cls = Number(this.studentClass?.value);
+
+  // ✅ STEP 1 VALIDATION ONLY
+  if (this.step === 1) {
+
+    const step1Fields = [
+      this.firstName, this.lastName, this.dob, this.age,
+      this.gender, this.fatherName, this.father_profession,
+      this.motherName, this.mother_profession,
+      this.guardians, this.annual_income,
+      this.address, this.state, this.city,
+      this.phone, this.mail, this.aadhaar,
+      this.caste, this.religion, this.hasSibling
+    ];
+
+    let isValid = true;
+
+    step1Fields.forEach(control => {
+      if (control?.invalid) {
+        control.markAsTouched();
+        isValid = false;
+      }
+    });
+
+    if (!isValid) return;
   }
 
-  back() {
-    if (this.step > 0) this.step--;
+  // ✅ STEP 2 VALIDATION (ONLY CLASS 11)
+  if (this.step === 2 && cls === 11) {
+
+    const step2Fields = [
+      this.boardName, this.schoolName,
+      this.mathMarks, this.scienceMarks,
+      this.socialMarks, this.hindiMarks,
+      this.englishMarks, this.additionalMarks,
+      this.stream
+    ];
+
+    let isValid = true;
+
+    step2Fields.forEach(control => {
+      if (control?.invalid) {
+        control.markAsTouched();
+        isValid = false;
+      }
+    });
+
+    if (!isValid) return;
+
+    // stream eligibility check
+    if (!this.isStreamEligible(this.stream?.value)) {
+      alert('Not eligible for selected stream');
+      return;
+    }
   }
+
+  // ✅ STEP FLOW
+  if (this.step === 1 && cls === 11) {
+    this.step = 2;
+    return;
+  }
+
+  if (this.step === 1 && cls !== 11) {
+    this.step = 3;
+    return;
+}
+
+  this.step++;
+}
+  back() {
+  if (this.step > 0) {
+    // If we're at step 3 and student is NOT class 11, skip back to step 1
+    if (this.step === 3 && this.studentClassAsNumber !== 11) {
+      this.step = 1;
+    } else {
+      this.step--;
+    }
+  }
+}
 
   /* ================= SUBMIT ================= */
   sub_form() {
@@ -349,4 +513,20 @@ export class Form implements OnInit {
   get siblingName() { return this.student_form.get('siblingName'); }
   get siblingRoll() { return this.student_form.get('siblingRoll'); }
   get siblingClass() { return this.student_form.get('siblingClass'); }
+  get boardName() { return this.student_form.get('boardName'); }
+  get schoolName() { return this.student_form.get('schoolName'); }
+  get mathMarks() { return this.student_form.get('mathMarks'); }
+  get scienceMarks() { return this.student_form.get('scienceMarks'); }
+  get englishMarks() { return this.student_form.get('englishMarks'); }
+  get hindiMarks() { return this.student_form.get('hindiMarks'); }
+  get socialMarks() { return this.student_form.get('socialMarks'); }
+  get additionalMarks() { return this.student_form.get('additionalMarks'); }
+  get stream() { return this.student_form.get('stream'); }
+  get scienceType() { return this.student_form.get('scienceType'); }
+  get studentClassAsNumber(): number | null {
+  const value = this.studentClass?.value;
+  if (!value) return null;
+  const num = +value;
+  return isNaN(num) ? null : num;
+}
 }

@@ -328,3 +328,159 @@ textarea:focus {
     font-size: 28px;
   }
 }
+
+
+/* =========================
+   MARKS TABLE (STEP 2)
+========================= */
+
+.marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Table cells */
+.marks-table th,
+.marks-table td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    vertical-align: top;
+    text-align: center;
+}
+
+/* Header */
+.marks-table th {
+    background: #f1f5f9;
+    font-weight: 600;
+    text-align: center;
+    color: #1e3a8a;
+}
+
+/* Column widths */
+.col-subject {
+    width: 40%;
+}
+
+.col-marks {
+    width: 18%;
+    text-align: center;
+}
+
+.col-total {
+    width: 12%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.col-percent {
+    width: 15%;
+    text-align: center;
+}
+
+/* Inputs */
+.marks-table input {
+    width: 100%;
+    padding: 4px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #9ca3af;
+    justify-self: center;
+}
+
+/* Error messages */
+.error-box {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.error-box span {
+    color: #dc2626;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+/* Summary rows (Best 5 + %) */
+.summary-row td {
+    background: #f8fafc;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    border-top: 1px solid #1e3a8a;
+    letter-spacing: 0.3px;
+}
+
+/* Row hover */
+.marks-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+    .marks-table input {
+        width: 45px;
+    }
+
+    .marks-table th,
+    .marks-table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
+
+/* Space below table */
+.marks-table {
+    margin-bottom: 25px;
+}
+
+/* Radio section spacing */
+.name-row {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Performance section spacing */
+.eligibility-box {
+    margin-top: 25px;
+    padding: 18px 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Inside performance text */
+.eligibility-box p {
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+/* Heading spacing */
+.eligibility-box h3 {
+    font-weight: bold;
+    color:#298ab4;
+    margin-bottom: 12px;
+    font-size: 23px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Buttons spacing */
+.form-actions {
+    margin-top: 35px;
+}
+.eligibility-status{
+  text-align: center;
+  font-size: 24px;
+}
+.stream-wrapper{
+  text-align: center;
+}

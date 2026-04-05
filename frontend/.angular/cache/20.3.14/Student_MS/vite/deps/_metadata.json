@@ -1,58 +1,58 @@
 {
-  "hash": "77f7b2a5",
-  "configHash": "c870804b",
+  "hash": "961c41e7",
+  "configHash": "fe961914",
   "lockfileHash": "de3d514e",
-  "browserHash": "763d0f16",
+  "browserHash": "07d341ce",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "c7b23fcf",
+      "fileHash": "6e27cb93",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "a18fa688",
+      "fileHash": "288c4484",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "c029b8ee",
+      "fileHash": "f532e4b7",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "a4f231dc",
+      "fileHash": "97e2deaa",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "fe111a97",
+      "fileHash": "dad2bee6",
       "needsInterop": false
     },
     "ngx-extended-pdf-viewer": {
       "src": "../../../../../../node_modules/ngx-extended-pdf-viewer/fesm2022/ngx-extended-pdf-viewer.mjs",
       "file": "ngx-extended-pdf-viewer.js",
-      "fileHash": "27f8d4ff",
+      "fileHash": "90bf8763",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-7V76QOKQ": {
-      "file": "chunk-7V76QOKQ.js"
+    "chunk-2U3PJBUG": {
+      "file": "chunk-2U3PJBUG.js"
     },
-    "chunk-CE7L2FSN": {
-      "file": "chunk-CE7L2FSN.js"
+    "chunk-SJBFRJEY": {
+      "file": "chunk-SJBFRJEY.js"
     },
-    "chunk-3VXBRDDX": {
-      "file": "chunk-3VXBRDDX.js"
+    "chunk-ZLXINS5A": {
+      "file": "chunk-ZLXINS5A.js"
     },
-    "chunk-PVOITZL7": {
-      "file": "chunk-PVOITZL7.js"
+    "chunk-RELTYFDP": {
+      "file": "chunk-RELTYFDP.js"
     }
   }
 }
