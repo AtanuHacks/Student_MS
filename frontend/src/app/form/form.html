@@ -349,103 +349,70 @@
 
     <thead>
         <tr>
-            <th class="col-subject">class-x</th>
-            <th class="col-subject">Mathematics</th>
-            <th class="col-subject">Science</th>
-            <th class="col-subject">Social Science</th>
-            <th class="col-subject">Hindi / Bengali</th>
-            <th class="col-subject">English</th>
-            <th class="col-subject">Additional</th>
-            <th class="col-total">Total</th>
-            <th class="col-percent">%</th>
+            <th>Class</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Social Science</th>
+            <th>Hindi / Bengali</th>
+            <th>English</th>
+            <th>Additional</th>
+            <th>Total Marks</th>
+            <th>Overall %</th>
         </tr>
     </thead>
 
     <tbody>
-
-        <!-- Mathematics -->
         <tr>
-            
+            <td>
+                <input type="text" value="10th"  readonly >
+            </td>
+
+            <!-- Math -->
             <td>
                 <input type="number" min="0" max="100" formControlName="mathMarks">
-                
             </td>
-            
-        
 
-        <!-- Repeat same pattern for all subjects -->
-        
-    
+            <!-- Science -->
             <td>
                 <input type="number" min="0" max="100" formControlName="scienceMarks">
                 <div class="error-box">
-                    <span *ngIf="scienceMarks?.errors?.['required'] && scienceMarks?.touched">Required</span>
-                    <span *ngIf="scienceMarks?.errors?.['min'] && scienceMarks?.touched">Min 0</span>
-                    <span *ngIf="scienceMarks?.errors?.['max'] && scienceMarks?.touched">Max 100</span>
+                    <span *ngIf="scienceMarks?.touched && scienceMarks?.errors?.['required']">Required</span>
                 </div>
             </td>
-            
 
-        
-            
+            <!-- Social -->
             <td>
                 <input type="number" min="0" max="100" formControlName="socialMarks">
-                <div class="error-box">
-                    <span *ngIf="socialMarks?.errors?.['required'] && socialMarks?.touched">Required</span>
-                    <span *ngIf="socialMarks?.errors?.['min'] && socialMarks?.touched">Min 0</span>
-                    <span *ngIf="socialMarks?.errors?.['max'] && socialMarks?.touched">Max 100</span>
-                </div>
             </td>
-                    
-            
+
+            <!-- Hindi -->
             <td>
                 <input type="number" min="0" max="100" formControlName="hindiMarks">
-                <div class="error-box">
-                    <span *ngIf="hindiMarks?.errors?.['required'] && hindiMarks?.touched">Required</span>
-                    <span *ngIf="hindiMarks?.errors?.['min'] && hindiMarks?.touched">Min 0</span>
-                    <span *ngIf="hindiMarks?.errors?.['max'] && hindiMarks?.touched">Max 100</span>
-                </div>
             </td>
-            
-        
-            
+
+            <!-- English -->
             <td>
                 <input type="number" min="0" max="100" formControlName="englishMarks">
-                <div class="error-box">
-                    <span *ngIf="englishMarks?.errors?.['required'] && englishMarks?.touched">Required</span>
-                    <span *ngIf="englishMarks?.errors?.['min'] && englishMarks?.touched">Min 0</span>
-                    <span *ngIf="englishMarks?.errors?.['max'] && englishMarks?.touched">Max 100</span>
-                </div>
             </td>
-            
 
-        
-            
+            <!-- ✅ Additional Subject (FIXED CLEAN) -->
             <td>
                 <input type="number" min="0" max="100" formControlName="additionalMarks">
-                <div class="error-box">
-                    <span *ngIf="additionalMarks?.errors?.['required'] && additionalMarks?.touched">Required</span>
-                    <span *ngIf="additionalMarks?.errors?.['min'] && additionalMarks?.touched">Min 0</span>
-                    <span *ngIf="additionalMarks?.errors?.['max'] && additionalMarks?.touched">Max 100</span>
-                </div>
+                
             </td>
-            
-        </tr>
 
+            <!-- ✅ Total -->
+            <td>
+                <strong>{{ totalBestMarks }}/500</strong>
+            </td>
+
+            <!-- ✅ Percentage -->
+            <td>
+                <strong>{{ classPercentage | number:'1.2-2' }}%</strong>
+            </td>
+
+        </tr>
     </tbody>
-
-    <!-- SUMMARY ROWS -->
-    <tfoot>
-        <tr class="summary-row">
-            <td colspan="2"><strong>Best 5 Total</strong></td>
-            <td colspan="2"><strong>{{ totalBestMarks }}/500</strong></td>
-        </tr>
-
-        <tr class="summary-row">
-            <td colspan="2"><strong>Overall Percentage</strong></td>
-            <td colspan="2"><strong>{{ classPercentage | number:'1.2-2' }}%</strong></td>
-        </tr>
-    </tfoot>
 
 </table>
 

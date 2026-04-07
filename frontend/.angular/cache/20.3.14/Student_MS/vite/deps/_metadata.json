@@ -1,52 +1,52 @@
 {
-  "hash": "961c41e7",
-  "configHash": "fe961914",
+  "hash": "d97bd2ff",
+  "configHash": "8cdbd3ff",
   "lockfileHash": "de3d514e",
-  "browserHash": "07d341ce",
+  "browserHash": "ec43674c",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "6e27cb93",
+      "fileHash": "42628a0a",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "288c4484",
+      "fileHash": "c2439395",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "f532e4b7",
+      "fileHash": "1cb93812",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "97e2deaa",
+      "fileHash": "05addcc9",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "dad2bee6",
+      "fileHash": "9a6f0f08",
       "needsInterop": false
     },
     "ngx-extended-pdf-viewer": {
       "src": "../../../../../../node_modules/ngx-extended-pdf-viewer/fesm2022/ngx-extended-pdf-viewer.mjs",
       "file": "ngx-extended-pdf-viewer.js",
-      "fileHash": "90bf8763",
+      "fileHash": "c31e5c2b",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-2U3PJBUG": {
-      "file": "chunk-2U3PJBUG.js"
-    },
     "chunk-SJBFRJEY": {
       "file": "chunk-SJBFRJEY.js"
+    },
+    "chunk-2U3PJBUG": {
+      "file": "chunk-2U3PJBUG.js"
     },
     "chunk-ZLXINS5A": {
       "file": "chunk-ZLXINS5A.js"
