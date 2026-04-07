@@ -585,6 +585,13 @@
             <p>Aadhaar: {{ aadhaarFileName }}</p>
             <p>Birth: {{ birthFileName }}</p>
 
+            <h3 *ngIf="studentClassAsNumber === 11">Academic</h3>
+            <p *ngIf="studentClassAsNumber === 11">Board: {{ student_form.value.boardName }}</p>
+            <p *ngIf="studentClassAsNumber === 11">School: {{ student_form.value.schoolName }}</p>
+            <p *ngIf="studentClassAsNumber === 11">Stream: {{ student_form.value.stream }}</p>
+            <p *ngIf="student_form.value.stream === 'Science'">Science Type: {{ student_form.value.scienceType }}</p>
+            <p *ngIf="studentClassAsNumber === 11">Class 10 Percentage: {{ classPercentage | number:'1.2-2' }}%</p>
+
             <div class="form-actions">
                 <button type="button" (click)="back()">Edit</button>
                 <button type="submit" (click)="sub_form()">Confirm & Submit</button>
