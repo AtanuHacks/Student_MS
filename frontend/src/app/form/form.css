@@ -334,12 +334,14 @@ textarea:focus {
    MARKS TABLE (STEP 2 FIXED)
 ========================= */
 
+
+
 .marks-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 15px;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+  table-layout: auto;
 }
 
 /* Cells */
@@ -359,11 +361,6 @@ textarea:focus {
     font-size: 13px;
 }
 
-/* Equal column width */
-.marks-table th,
-.marks-table td {
-    width: 22%;
-}
 
 /* Inputs */
 .marks-table input {
@@ -503,4 +500,28 @@ textarea:focus {
     .eligibility-status {
         font-size: 14px;
     }
+}
+
+/* =========================
+   TABLE RESPONSIVE FINAL
+========================= */
+
+
+/* Desktop */
+.marks-scroll {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+  .marks-scroll {
+    overflow-x: auto;
+  }
+
+  .marks-table {
+    min-width: 900px;
+  }
+
 }

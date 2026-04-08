@@ -343,78 +343,79 @@
     <input type="text" placeholder="Enter School Name (Class 10)" formControlName="schoolName">
 
     <!-- ================= MARKS TABLE ================= -->
-    <h3>Class 10 Marks</h3>
+    <h2>Class 10 Marks</h2>
+    <div class="marks-scroll">
+        <table class="marks-table">
 
-<table class="marks-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Maths</th>
+                    <th>Science</th>
+                    <th>Social Science</th>
+                    <th>Hindi / Bengali</th>
+                    <th>English</th>
+                    <th>Additional</th>
+                    <th>Total Marks</th>
+                    <th>Overall %</th>
+                </tr>
+            </thead>
 
-    <thead>
-        <tr>
-            <th>Class</th>
-            <th>Maths</th>
-            <th>Science</th>
-            <th>Social Science</th>
-            <th>Hindi / Bengali</th>
-            <th>English</th>
-            <th>Additional</th>
-            <th>Total Marks</th>
-            <th>Overall %</th>
-        </tr>
-    </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" value="10th"  readonly >
+                    </td>
 
-    <tbody>
-        <tr>
-            <td>
-                <input type="text" value="10th"  readonly >
-            </td>
+                    <!-- Math -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="mathMarks">
+                    </td>
 
-            <!-- Math -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="mathMarks">
-            </td>
+                    <!-- Science -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="scienceMarks">
+                        <div class="error-box">
+                            <span *ngIf="scienceMarks?.touched && scienceMarks?.errors?.['required']">Required</span>
+                        </div>
+                    </td>
 
-            <!-- Science -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="scienceMarks">
-                <div class="error-box">
-                    <span *ngIf="scienceMarks?.touched && scienceMarks?.errors?.['required']">Required</span>
-                </div>
-            </td>
+                    <!-- Social -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="socialMarks">
+                    </td>
 
-            <!-- Social -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="socialMarks">
-            </td>
+                    <!-- Hindi -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="hindiMarks">
+                    </td>
 
-            <!-- Hindi -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="hindiMarks">
-            </td>
+                    <!-- English -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="englishMarks">
+                    </td>
 
-            <!-- English -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="englishMarks">
-            </td>
+                    <!-- ✅ Additional Subject (FIXED CLEAN) -->
+                    <td>
+                        <input type="number" min="0" max="100" formControlName="additionalMarks">
+                        
+                    </td>
 
-            <!-- ✅ Additional Subject (FIXED CLEAN) -->
-            <td>
-                <input type="number" min="0" max="100" formControlName="additionalMarks">
-                
-            </td>
+                    <!-- ✅ Total -->
+                    <td>
+                        <strong>{{ totalBestMarks }}/500</strong>
+                    </td>
 
-            <!-- ✅ Total -->
-            <td>
-                <strong>{{ totalBestMarks }}/500</strong>
-            </td>
+                    <!-- ✅ Percentage -->
+                    <td>
+                        <strong>{{ classPercentage | number:'1.2-2' }}%</strong>
+                    </td>
 
-            <!-- ✅ Percentage -->
-            <td>
-                <strong>{{ classPercentage | number:'1.2-2' }}%</strong>
-            </td>
+                </tr>
+            </tbody>
 
-        </tr>
-    </tbody>
-
-</table>
+        </table>
+    </div>
 
     <!-- Stream Selection -->
     <div class="stream-wrapper">
